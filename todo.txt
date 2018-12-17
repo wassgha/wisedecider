@@ -1,0 +1,2 @@
+- Add buttons should open a dialog instead of adding default values
+- Empty table shouldn't show the Choice column
