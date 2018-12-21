@@ -1,7 +1,15 @@
 import React from 'react'
-import { Table, Column, AutoSizer, defaultTableRowRenderer } from 'react-virtualized'
+import {
+  Table,
+  Column,
+  AutoSizer,
+  CellMeasurer,
+  CellMeasurerCache,
+  defaultTableRowRenderer
+} from 'react-virtualized'
 import { SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc'
 import { view } from 'react-easy-state'
+import _ from 'lodash'
 
 // Store
 import worksheet from '../stores/worksheetStore'
@@ -10,7 +18,9 @@ import worksheet from '../stores/worksheetStore'
 import Value from './Value'
 import Choice from './Choice'
 import Score from './Score'
-import tableCellRenderer from './DecisionTableCell'
+import DecisionTableCell from './DecisionTableCell'
+
+const ROW_HEIGHT = 100
 
 const SortableTable = SortableContainer(Table)
 const SortableTableRowRenderer = SortableElement(defaultTableRowRenderer)
@@ -27,8 +37,18 @@ const SortableHeaderRowRenderer = SortableContainer(({ className, columns, style
 const SortableHandleCreator = SortableHandle(({ children, ...props }) =>
   React.cloneElement(children, props)
 )
-
-const ROW_HEIGHT = 100
+const cache = new CellMeasurerCache({
+  fixedWidth: true,
+  minHeight: ROW_HEIGHT
+})
+const tableCellRenderer = data => {
+  const { dataKey, rowIndex, colIndex } = data
+  return (
+    <CellMeasurer cache={cache} columnIndex={colIndex} key={dataKey} rowIndex={rowIndex}>
+      <DecisionTableCell data={data} />
+    </CellMeasurer>
+  )
+}
 
 class DecisionTable extends React.Component {
   render() {
@@ -77,10 +97,11 @@ class DecisionTable extends React.Component {
               height={height}
               autoHeight
               headerHeight={ROW_HEIGHT}
-              rowHeight={ROW_HEIGHT}
+              rowHeight={cache.rowHeight}
               rowCount={rows.length}
               rowGetter={({ index }) => rows[index]}
               rowRenderer={params => <SortableTableRowRenderer {...params} />}
+              deferredMeasurementCache={cache}
               headerRowRenderer={params => (
                 <SortableHeaderRowRenderer
                   {...params}

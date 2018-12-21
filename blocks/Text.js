@@ -1,15 +1,15 @@
-import ContentEditable from 'react-contenteditable'
 import React, { Component } from 'react'
 import { view, store } from 'react-easy-state'
 import sanitizeHtml from 'sanitize-html'
-import ReactDOMServer from 'react-dom/server'
+import { Editor } from 'slate-react'
+import { KeyUtils, Value } from 'slate'
 
 // Store
 import worksheet from '../stores/worksheetStore'
 
 // Components
-import Choice from '../components/Choice'
-import Value from '../components/Value'
+import InlineChoice from '../components/Choice'
+import InlineValue from '../components/Value'
 import Block from '../components/Block'
 
 const DEFAULT_PLACEHOLDER = 'Insert your text here...'
@@ -18,10 +18,12 @@ class Text extends Component {
   constructor(props) {
     super(props)
 
-    this.contentEditable = React.createRef()
+    KeyUtils.resetGenerator()
+    this.editor = React.createRef()
+
     const { content } = this.props
     this.textStore = store({
-      content: content || '',
+      content: Value.fromJSON(content || {}),
       editing: false
     })
   }
@@ -36,10 +38,10 @@ class Text extends Component {
     worksheet.editBlock(id, { content: this.textStore.content })
   }
 
-  onEdit = evt => {
+  onEdit = ({ value }) => {
     const { id } = this.props
     this.textStore.editing = true
-    this.textStore.content = evt.target.value
+    this.textStore.content = value
     worksheet.editBlock(id, { content: this.textStore.content })
   }
 
@@ -93,80 +95,11 @@ class Text extends Component {
 
   render() {
     const { placeholder = DEFAULT_PLACEHOLDER } = this.props
+    console.log('placeholder', placeholder)
 
     return (
       <Block>
-        <ContentEditable
-          innerRef={this.contentEditable}
-          html={
-            this.textStore.editing
-              ? this.textStore.content
-              : this.textStore.content.replace(/@([CV])(\d+)/g, (match, p1, p2) => {
-                  const type = p1
-                  const index = Number(p2) - 1
-                  if (type == 'C') {
-                    const choice = worksheet.choices[index]
-                    return choice
-                      ? ReactDOMServer.renderToStaticMarkup(
-                          <Choice
-                            index={index}
-                            id={choice.id}
-                            value={choice.name}
-                            color={choice.color}
-                          />
-                        ) + '&nbsp;'
-                      : '@C' + p2
-                  } else {
-                    const value = worksheet.values[index]
-                    return value
-                      ? ReactDOMServer.renderToStaticMarkup(
-                          <Value index={index} id={value.id} value={value.name} />
-                        ) + '&nbsp;'
-                      : '@V' + p2
-                  }
-                })
-          }
-          disabled={false}
-          onChange={this.onEdit}
-          onBlur={this.onBlur}
-          onClick={this.onFocus}
-          onKeyDown={this.handleKeyPress}
-          tagName={'p'}
-          className={'text'}
-          style={{
-            color: '#333',
-            cursor: 'text'
-          }}
-          placeholder={placeholder}
-        />
-        {/* <div
-          dangerouslySetInnerHTML={{
-            __html: this.textStore.content.replace(/@([CV])([0-9+])/g, (match, p1, p2) => {
-              const type = p1
-              const index = Number(p2) - 1
-              if (type == 'C') {
-                const choice = worksheet.choices[index]
-                return choice
-                  ? ReactDOMServer.renderToStaticMarkup(
-                      <Choice index={index} value={choice.name} color={choice.color} />
-                    ) + '&nbsp;'
-                  : '@C' + p2
-              } else {
-                const value = worksheet.values[index]
-                return value
-                  ? ReactDOMServer.renderToStaticMarkup(
-                      <Value index={index} value={value.name} />
-                    ) + '&nbsp;'
-                  : '@V' + p2
-              }
-            })
-          }}
-          style={{
-            color: '#333',
-            cursor: 'text'
-          }}
-          onClick={this.onFocus}
-        /> */}
+        <Editor placeholder={placeholder} value={this.textStore.content} onChange={this.onEdit} />
       </Block>
     )
   }

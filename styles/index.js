@@ -31,7 +31,7 @@ body {
 .cell {
   display: flex;
   flex: 1;
-  padding: 15px;
+  padding: 16px;
   flex-direction: column;
   align-items: center;
 }

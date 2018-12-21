@@ -2,68 +2,75 @@ import { store } from 'react-easy-state'
 import shortid from 'shortid'
 import randomColor from 'randomcolor'
 import _ from 'lodash'
+import axios from 'axios'
 import { arrayMove } from 'react-sortable-hoc'
 
-let storage
+// let storage
 
 import { BLOCK } from '../constants'
 
 const worksheet = store({
+  id: null,
   blocks: [],
   choices: [],
   values: [],
   scores: {},
   isLoading: false,
-  async load() {
+  async load(id) {
     worksheet.isLoading = true
-    const reactEasyParams = require('react-easy-params')
-    storage = reactEasyParams.storage
-    if (storage && storage.worksheet) {
-      worksheet.blocks = storage.worksheet.blocks
-      worksheet.choices = storage.worksheet.choices
-      worksheet.values = storage.worksheet.values
-      worksheet.scores = storage.worksheet.scores
-    } else {
-      worksheet.blocks = [
-        {
-          id: shortid.generate(),
-          type: BLOCK.TITLE,
-          data: {
-            placeholder: 'Insert decision name here...'
-            // tag: 'h1',
-            // title: 'My decision'
-          }
-        },
-        {
-          id: shortid.generate(),
-          type: BLOCK.TEXT,
-          data: {
-            placeholder:
-              'Use this paragraph to describe the decision you are trying to make and any important background information related to the decision...'
-            // content: 'Your text here'
-          }
-        }
-      ]
-      worksheet.choices = [
-        // {
-        //   id: shortid.generate(),
-        //   name: 'An example choice',
-        //   color: randomColor({ luminosity: 'dark' })
-        // },
-        // {
-        //   id: shortid.generate(),
-        //   name: 'Another example choice',
-        //   color: randomColor({ luminosity: 'dark' })
-        // }
-      ]
-      worksheet.values = [
-        // { id: shortid.generate(), name: 'First value' },
-        // { id: shortid.generate(), name: 'Second value' }
-      ]
-      worksheet.scores = {}
-      worksheet.save()
-    }
+    const { data } = await axios.get('http://localhost:3000/api/worksheet/' + id)
+    worksheet.id = id
+    worksheet.blocks = data.blocks || []
+    worksheet.choices = data.choices || []
+    worksheet.values = data.values || []
+    worksheet.scores = data.scores || {}
     worksheet.isLoading = false
+  },
+  async new() {
+    worksheet.isLoading = true
+    const createdWorksheet = await axios.post('http://localhost:3000/api/worksheet')
+    const id = createdWorksheet.data._id
+    worksheet.id = id
+    worksheet.blocks = [
+      {
+        id: shortid.generate(),
+        type: BLOCK.TITLE,
+        data: {
+          placeholder: 'Insert decision name here...'
+          // tag: 'h1',
+          // title: 'My decision'
+        }
+      },
+      {
+        id: shortid.generate(),
+        type: BLOCK.TEXT,
+        data: {
+          placeholder:
+            'Use this paragraph to describe the decision you are trying to make and any important background information related to the decision...'
+          // content: 'Your text here'
+        }
+      }
+    ]
+    worksheet.choices = [
+      // {
+      //   id: shortid.generate(),
+      //   name: 'An example choice',
+      //   color: randomColor({ luminosity: 'dark' })
+      // },
+      // {
+      //   id: shortid.generate(),
+      //   name: 'Another example choice',
+      //   color: randomColor({ luminosity: 'dark' })
+      // }
+    ]
+    worksheet.values = [
+      // { id: shortid.generate(), name: 'First value' },
+      // { id: shortid.generate(), name: 'Second value' }
+    ]
+    worksheet.scores = {}
+    worksheet.isLoading = false
+    worksheet.save()
+    return id
   },
   async loadExample() {
     worksheet.isLoading = true
@@ -164,7 +171,7 @@ const worksheet = store({
     worksheet.values.push({ id, name })
     // Add score for each choice
     worksheet.choices.forEach(choice => {
-      worksheet.rate(choice.id, id, 0, '')
+      worksheet.rate(choice.id, id, 1, '', false)
     })
     worksheet.save()
     return id
@@ -179,12 +186,12 @@ const worksheet = store({
     if (!id) return
     const valueIndex = _.findIndex(worksheet.values, { id })
     _.remove(worksheet.values, { id })
-    worksheet.save()
     const previousValue = worksheet.values[valueIndex - 1]
     // Remove from scores
     Object.keys(worksheet.scores).forEach(choice => {
       if (worksheet.scores[choice][id]) delete worksheet.scores[choice][id]
     })
+    worksheet.save()
     return previousValue && previousValue.id
   },
   moveValue({ oldIndex, newIndex }) {
@@ -197,7 +204,7 @@ const worksheet = store({
     worksheet.choices.push({ id, name, color })
     // Add score for each value
     worksheet.values.forEach(value => {
-      worksheet.rate(id, value.id, 0, '')
+      worksheet.rate(id, value.id, 1, '', false)
     })
     worksheet.save()
     return id
@@ -223,20 +230,28 @@ const worksheet = store({
     worksheet.choices = arrayMove(worksheet.choices, oldIndex, newIndex)
     worksheet.save()
   },
-  rate(choiceId, valueId, score, comment) {
+  rate(choiceId, valueId, score, comment, save = true) {
     if (!worksheet.scores[choiceId]) worksheet.scores[choiceId] = {}
     if (!worksheet.scores[choiceId][valueId]) worksheet.scores[choiceId][valueId] = {}
     worksheet.scores[choiceId][valueId] = {
       ...worksheet.scores[choiceId][valueId],
-      ...(score ? { score } : {}),
-      ...(comment ? { comment } : {})
+      ...(typeof score != 'undefined' ? { score } : {}),
+      ...(typeof comment != 'undefined' ? { comment } : {})
     }
-    worksheet.save()
+    if (save) {
+      worksheet.save()
+    }
   },
-  save: _.debounce(() => {
-    if (storage) {
-      storage.worksheet = worksheet
-    }
+  save: _.debounce(async () => {
+    // if (storage) {
+    //   storage.worksheet = worksheet
+    // }
+    console.log('Sending update', {
+      ...worksheet
+    })
+    await axios.put('http://localhost:3000/api/worksheet/' + worksheet.id, {
+      ...worksheet
+    })
   }, 500)
 })
 

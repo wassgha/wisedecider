@@ -12,7 +12,7 @@ import DecisionTable from '../components/DecisionTable'
 
 // Blocks
 import Title from '../blocks/Title'
-import Text from '../blocks/Text'
+import Text from '../blocks/TextVanilla'
 
 class Worksheet extends Component {
   constructor(props) {
@@ -25,8 +25,9 @@ class Worksheet extends Component {
     this.focusedBlockID = null
   }
 
-  componentDidMount() {
-    worksheet.load()
+  async componentDidMount() {
+    const { id } = this.props
+    worksheet.load(id)
   }
 
   componentDidUpdate(prevProps, prevState) {
