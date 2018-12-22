@@ -16,6 +16,7 @@ const worksheet = store({
   values: [],
   scores: {},
   isLoading: false,
+  isSaving: false,
   async load(id) {
     worksheet.isLoading = true
     const { data } = await axios.get('http://localhost:3000/api/worksheet/' + id)
@@ -25,6 +26,7 @@ const worksheet = store({
     worksheet.values = data.values || []
     worksheet.scores = data.scores || {}
     worksheet.isLoading = false
+    worksheet.isSaving = false
   },
   async new() {
     worksheet.isLoading = true
@@ -246,12 +248,11 @@ const worksheet = store({
     // if (storage) {
     //   storage.worksheet = worksheet
     // }
-    console.log('Sending update', {
-      ...worksheet
-    })
+    worksheet.isSaving = true
     await axios.put('http://localhost:3000/api/worksheet/' + worksheet.id, {
       ...worksheet
     })
+    worksheet.isSaving = false
   }, 500)
 })
 

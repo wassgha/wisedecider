@@ -14,6 +14,9 @@ import DecisionTable from '../components/DecisionTable'
 import Title from '../blocks/Title'
 import Text from '../blocks/TextVanilla'
 
+// Icons
+import Icon from '@material-ui/core/Icon'
+
 class Worksheet extends Component {
   constructor(props) {
     super(props)
@@ -62,13 +65,24 @@ class Worksheet extends Component {
               <span>Wise</span>
               <b>Decider</b>
             </div>
+            <div className={'menu'}>
+              <span className={'save-indicator'}>
+                <Icon className={'save-indicator-icon'}>
+                  {worksheet.isSaving ? 'sync' : 'cloud'}
+                </Icon>
+                <span className={'save-text'}>{worksheet.isSaving ? 'Saving...' : 'Saved'}</span>
+              </span>
+              <a className={'new-btn'} href={'/'} target="_blank">
+                NEW
+              </a>
+            </div>
             <div className={'profile'}>
               <img
                 src={'https://cdn-images-1.medium.com/fit/c/64/64/1*UuZygjKcOW9DKNMar0eEYQ.jpeg'}
                 className={'profilePhoto'}
               />
             </div>
-          </div>
+          </div>=
         </div>
 
         {/* Content */}
@@ -189,6 +203,42 @@ class Worksheet extends Component {
             max-width: 960px;
             margin-left: auto;
             margin-right: auto;
+          }
+          .menu {
+            flex: 1;
+            padding-left: 20px;
+            padding-right: 20px;
+            justify-content: space-between;
+            align-items: center;
+            display: flex;
+          }
+
+          .save-indicator {
+            color: #afafaf;
+            vertical-align: middle;
+            flex: 1;
+            justify-content: flex-start;
+            display: flex;
+            align-items: center;
+          }
+
+          .save-text {
+            margin-left: 6px;
+          }
+
+          .new-btn {
+            border: 2px solid #427dde;
+            border-radius: 50px;
+            padding: 4px;
+            padding-right: 16px;
+            padding-left: 16px;
+            color: #427dde;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 13px;
+            vertical-align: middle;
+            cursor: pointer;
+            pointer-events: all;
           }
         `}</style>
       </div>
