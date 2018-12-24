@@ -82,7 +82,7 @@ class Worksheet extends Component {
                 className={'profilePhoto'}
               />
             </div>
-          </div>=
+          </div>
         </div>
 
         {/* Content */}
