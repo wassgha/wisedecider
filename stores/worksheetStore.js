@@ -4,13 +4,11 @@ import randomColor from 'randomcolor'
 import _ from 'lodash'
 import axios from 'axios'
 import { arrayMove } from 'react-sortable-hoc'
-require('dotenv').config()
-
-// let storage
 
 import { BLOCK } from '../constants'
 
-const PORT = process.env.PORT || 3001
+const DEV = true
+const SERVER_HOST = DEV ? 'http://localhost:3000/' : '/'
 
 const worksheet = store({
   id: null,
@@ -18,11 +16,11 @@ const worksheet = store({
   choices: [],
   values: [],
   scores: {},
-  isLoading: false,
+  isLoading: true,
   isSaving: false,
   async load(id) {
     worksheet.isLoading = true
-    const { data } = await axios.get(`http://localhost:${PORT}/api/worksheet/${id}`)
+    const { data } = await axios.get(`${SERVER_HOST}api/worksheet/${id}`)
     worksheet.id = id
     worksheet.blocks = data.blocks || []
     worksheet.choices = data.choices || []
@@ -33,7 +31,7 @@ const worksheet = store({
   },
   async new() {
     worksheet.isLoading = true
-    const createdWorksheet = await axios.post(`http://localhost:${PORT}/api/worksheet`)
+    const createdWorksheet = await axios.post(`${SERVER_HOST}api/worksheet`)
     const id = createdWorksheet.data._id
     worksheet.id = id
     worksheet.blocks = [
@@ -252,7 +250,7 @@ const worksheet = store({
     //   storage.worksheet = worksheet
     // }
     worksheet.isSaving = true
-    await axios.put(`http://localhost:${PORT}/api/worksheet/${worksheet.id}`, {
+    await axios.put(`${SERVER_HOST}api/worksheet/${worksheet.id}`, {
       ...worksheet
     })
     worksheet.isSaving = false

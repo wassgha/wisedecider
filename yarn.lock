@@ -5631,6 +5631,10 @@ react-color@^2.14.1:
     reactcss "^1.2.0"
     tinycolor2 "^1.4.1"
 
+react-content-loader@^3.4.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/react-content-loader/-/react-content-loader-3.4.1.tgz#8eb273c630ffb36cb92f4383be811828eb8e1e66"
+
 react-contenteditable@^3.2.3:
   version "3.2.3"
   resolved "https://registry.yarnpkg.com/react-contenteditable/-/react-contenteditable-3.2.3.tgz#efa56c37f46a6ed604aa4385a36274a460f5038b"
@@ -5706,6 +5710,12 @@ react-joyride@^1.11.4:
 react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
+
+react-placeholder@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/react-placeholder/-/react-placeholder-3.0.1.tgz#fa6e915f41ce8da66eb10a4aa6d87d31e50aeaaa"
+  dependencies:
+    prop-types "^15.6.0"
 
 react-rating@^1.6.1:
   version "1.6.1"

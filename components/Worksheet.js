@@ -1,5 +1,16 @@
 import React, { Component } from 'react'
 import { view } from 'react-easy-state'
+import Head from 'next/head'
+import _ from 'lodash'
+import ReactPlaceholder from 'react-placeholder'
+import {
+  TextBlock,
+  MediaBlock,
+  TextRow,
+  RectShape,
+  RoundShape
+} from 'react-placeholder/lib/placeholders'
+import 'react-placeholder/lib/reactPlaceholder.css'
 
 // Store
 import worksheet from '../stores/worksheetStore'
@@ -56,8 +67,14 @@ class Worksheet extends Component {
   }
 
   render() {
+    const titleBlock = _.find(worksheet.blocks || [], { type: 'title' })
+    const title =
+      titleBlock && titleBlock.data && titleBlock.data.title ? titleBlock.data.title : 'Unnamed'
     return (
       <div className={'container'}>
+        <Head>
+          <title>{title} WiseDecider Worksheet</title>
+        </Head>
         {/* Header */}
         <div className={'header'}>
           <div className={'wrapper'}>
@@ -68,9 +85,11 @@ class Worksheet extends Component {
             <div className={'menu'}>
               <span className={'save-indicator'}>
                 <Icon className={'save-indicator-icon'}>
-                  {worksheet.isSaving ? 'sync' : 'cloud'}
+                  {worksheet.isLoading ? 'hourglass_empty' : worksheet.isSaving ? 'sync' : 'cloud'}
                 </Icon>
-                <span className={'save-text'}>{worksheet.isSaving ? 'Saving...' : 'Saved'}</span>
+                <span className={'save-text'}>
+                  {worksheet.isLoading ? 'Loading...' : worksheet.isSaving ? 'Saving...' : 'Saved'}
+                </span>
               </span>
               <a className={'new-btn'} href={'/'} target="_blank">
                 NEW
@@ -88,67 +107,99 @@ class Worksheet extends Component {
         {/* Content */}
         <div className={'wrapper'}>
           {/* Blocks */}
-          {worksheet.blocks.map(block => {
-            switch (block.type) {
-              case 'text':
-                return (
-                  <Text
-                    ref={ref => this.setBlockRef(block.id, ref)}
-                    setCurrentBlock={this.setCurrentBlock}
-                    id={block.id}
-                    {...block.data}
-                  />
-                )
-              case 'title':
-                return (
-                  <Title
-                    ref={ref => this.setBlockRef(block.id, ref)}
-                    setCurrentBlock={this.setCurrentBlock}
-                    id={block.id}
-                    {...block.data}
-                    editable
-                  />
-                )
-              default:
+          <ReactPlaceholder
+            ready={!worksheet.isLoading}
+            customPlaceholder={
+              <div>
+                <TextRow
+                  rows={1}
+                  color={'#CDCDCD'}
+                  style={{ height: '36px', marginTop: '24px', marginBottom: '24px' }}
+                />
+                <br />
+                <RectShape color={'#CDCDCD'} style={{ width: '100%', height: 300 }} />
+                <br />
+                <TextBlock rows={4} color={'#CDCDCD'} />
+                <br />
+                <TextBlock rows={3} color={'#CDCDCD'} />
+              </div>
             }
-          })}
+          >
+            {worksheet.blocks.map(block => {
+              switch (block.type) {
+                case 'text':
+                  return (
+                    <Text
+                      key={block.id}
+                      ref={ref => this.setBlockRef(block.id, ref)}
+                      setCurrentBlock={this.setCurrentBlock}
+                      id={block.id}
+                      {...block.data}
+                    />
+                  )
+                case 'title':
+                  return (
+                    <Title
+                      key={block.id}
+                      ref={ref => this.setBlockRef(block.id, ref)}
+                      setCurrentBlock={this.setCurrentBlock}
+                      id={block.id}
+                      {...block.data}
+                      editable
+                    />
+                  )
+                default:
+              }
+            })}
+          </ReactPlaceholder>
 
           {/* Choices */}
           <h2>Choices</h2>
-          {worksheet.choices.map((choice, index) => (
-            <Choice
-              index={index}
-              id={choice.id}
-              value={choice.name}
-              color={choice.color}
-              editable
-            />
-          ))}
-          <InlineButton onClick={() => worksheet.addChoice()} />
-          {worksheet.choices.length == 0 && (
-            <span style={{ color: '#999', marginLeft: '10px' }}>
-              This decision currently has no choices
-            </span>
-          )}
+          <ReactPlaceholder ready={!worksheet.isLoading} type="text" rows={4}>
+            <div>
+              {worksheet.choices.map((choice, index) => (
+                <Choice
+                  index={index}
+                  id={choice.id}
+                  value={choice.name}
+                  color={choice.color}
+                  editable
+                />
+              ))}
+              <InlineButton onClick={() => worksheet.addChoice()} />
+              {worksheet.choices.length == 0 && (
+                <span style={{ color: '#999', marginLeft: '10px' }}>
+                  This decision currently has no choices
+                </span>
+              )}
+            </div>
+          </ReactPlaceholder>
 
           {/* Values */}
           <h2>Values</h2>
-          {worksheet.values.map((value, index) => (
-            <Value index={index} id={value.id} value={value.name} editable />
-          ))}
-          <InlineButton onClick={() => worksheet.addValue()} />
-          {worksheet.values.length == 0 && (
-            <span style={{ color: '#999', marginLeft: '10px' }}>
-              This decision currently has no values
-            </span>
-          )}
+          <ReactPlaceholder ready={!worksheet.isLoading} type="text" rows={4}>
+            <div>
+              {worksheet.values.map((value, index) => (
+                <Value index={index} id={value.id} value={value.name} editable />
+              ))}
+              <InlineButton onClick={() => worksheet.addValue()} />
+              {worksheet.values.length == 0 && (
+                <span style={{ color: '#999', marginLeft: '10px' }}>
+                  This decision currently has no values
+                </span>
+              )}
+            </div>
+          </ReactPlaceholder>
 
           {/* Decision Table */}
           <h2>Decision Table</h2>
-          <p style={{ color: '#999' }}>
-            First reorganize the columns based on which values are more important to this decision,
-            then reorganize the rows based on which choices ranked higher on the ordered values.
-          </p>
+          <ReactPlaceholder ready={!worksheet.isLoading} type="text" rows={7}>
+            <p style={{ color: '#999' }}>
+              First reorganize the columns based on which values are more important to this
+              decision, then reorganize the rows based on which choices ranked higher on the ordered
+              values.
+            </p>
+          </ReactPlaceholder>
         </div>
         <DecisionTable
           scores={worksheet.scores}

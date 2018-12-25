@@ -14,18 +14,17 @@ class Doc extends Document {
       <html>
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <title>WiseD</title>
           <link
             rel="stylesheet"
             href="https://use.fontawesome.com/releases/v5.4.1/css/regular.css"
             integrity="sha384-4e3mPOi7K1/4SAx8aMeZqaZ1Pm4l73ZnRRquHFWzPh2Pa4PMAgZm8/WNh6ydcygU"
-            crossorigin="anonymous"
+            crossOrigin="anonymous"
           />
           <link
             rel="stylesheet"
             href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
             integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
-            crossorigin="anonymous"
+            crossOrigin="anonymous"
           />
           <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
           <style jsx global>
