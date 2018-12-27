@@ -15,7 +15,7 @@ class Choice extends Component {
   render() {
     const { id, value, index = 0, color = '#7FB049', editable = false, draggable } = this.props
     return (
-      <div className={'container'}>
+      <div className={'choice'}>
         <InlineReference
           prefix={'C'}
           color={color}
@@ -27,14 +27,16 @@ class Choice extends Component {
               : undefined
           }
           draggable={draggable}
+          direction={'col'}
         />
         {editable && (
           <ChoiceEditDialog ref={this.dialog} id={id} color={color} value={value} index={index} />
         )}
         <style jsx>{`
-          .container {
-            display: inline-flex;
+          .choice {
+            display: inline-block;
             max-width: 100%;
+            margin: 5px;
           }
           .text-field {
             margin-left: 16px;

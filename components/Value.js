@@ -15,7 +15,7 @@ class Value extends Component {
   render() {
     const { value, index = 0, id, editable = false, draggable } = this.props
     return (
-      <div className={'container'}>
+      <div className={'value'}>
         <InlineReference
           prefix={'V'}
           color={'#D0021B'}
@@ -30,9 +30,10 @@ class Value extends Component {
         />
         {editable && <ValueEditDialog ref={this.dialog} id={id} value={value} index={index} />}
         <style jsx>{`
-          .container {
-            display: inline-flex;
+          .value {
+            display: inline-block;
             max-width: 100%;
+            margin: 5px;
           }
           .text-field {
             margin-left: 16px;

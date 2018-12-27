@@ -111,6 +111,14 @@ body {
   fill: currentColor;
 }
 
+.ReactVirtualized__Table__headerTruncatedText {
+    display: inline;
+    width: auto;
+    white-space: normal;
+    text-overflow: clip;
+    overflow: auto;
+}
+
 /* List default theme */
 
 .ReactVirtualized__List {

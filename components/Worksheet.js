@@ -223,6 +223,9 @@ class Worksheet extends Component {
             flex: 1;
             align-items: center;
             justify-content: space-between;
+            max-width: 1080px;
+            margin-left: auto;
+            margin-right: auto;
           }
           .logo {
             background: #94bcff;
@@ -267,10 +270,12 @@ class Worksheet extends Component {
           .save-indicator {
             color: #afafaf;
             vertical-align: middle;
-            flex: 1;
             justify-content: flex-start;
             display: flex;
             align-items: center;
+            background: #ffffffdd;
+            padding: 0px 16px;
+            border-radius: 50px;
           }
 
           .save-text {
@@ -279,6 +284,7 @@ class Worksheet extends Component {
 
           .new-btn {
             border: 2px solid #427dde;
+            background: #ffffffdd;
             border-radius: 50px;
             padding: 4px;
             padding-right: 16px;

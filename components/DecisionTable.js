@@ -73,35 +73,42 @@ class DecisionTable extends React.Component {
     }
     const { rows, cols } = data
     return (
-      <div style={{ height: '100vh' }}>
+      <div style={{ height: '100vh', width: '100vw', overflowX: 'scroll' }}>
         <AutoSizer>
-          {({ width, height }) => (
-            <SortableTable
-              lockAxis="y"
-              onSortEnd={worksheet.moveChoice}
-              width={width}
-              height={height}
-              autoHeight
-              headerHeight={ROW_HEIGHT}
-              rowHeight={ROW_HEIGHT}
-              rowCount={rows.length}
-              rowGetter={({ index }) => rows[index]}
-              rowRenderer={params => <SortableTableRowRenderer {...params} />}
-              headerRowRenderer={params => (
-                <SortableHeaderRowRenderer
-                  {...params}
-                  axis="x"
-                  lockAxis="x"
-                  onSortEnd={worksheet.moveValue}
-                />
-              )}
-              useDragHandle={true}
-            >
-              {cols.map(col => (
-                <Column {...col} width={width / values.length} cellRenderer={tableCellRenderer} />
-              ))}
-            </SortableTable>
-          )}
+          {({ width, height }) => {
+            const finalWidth = Math.max(width, 300 * values.length)
+            return (
+              <SortableTable
+                lockAxis="y"
+                onSortEnd={worksheet.moveChoice}
+                width={finalWidth}
+                height={height}
+                autoHeight
+                headerHeight={ROW_HEIGHT}
+                rowHeight={ROW_HEIGHT}
+                rowCount={rows.length}
+                rowGetter={({ index }) => rows[index]}
+                rowRenderer={params => <SortableTableRowRenderer {...params} />}
+                headerRowRenderer={params => (
+                  <SortableHeaderRowRenderer
+                    {...params}
+                    axis="x"
+                    lockAxis="x"
+                    onSortEnd={worksheet.moveValue}
+                  />
+                )}
+                useDragHandle={true}
+              >
+                {cols.map(col => (
+                  <Column
+                    {...col}
+                    width={finalWidth / values.length}
+                    cellRenderer={tableCellRenderer}
+                  />
+                ))}
+              </SortableTable>
+            )
+          }}
         </AutoSizer>
       </div>
     )
