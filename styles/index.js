@@ -28,6 +28,12 @@ body {
   color: #aaa;
 }
 
+.wrapper {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .cell {
   display: flex;
   flex: 1;

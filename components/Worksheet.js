@@ -3,13 +3,7 @@ import { view } from 'react-easy-state'
 import Head from 'next/head'
 import _ from 'lodash'
 import ReactPlaceholder from 'react-placeholder'
-import {
-  TextBlock,
-  MediaBlock,
-  TextRow,
-  RectShape,
-  RoundShape
-} from 'react-placeholder/lib/placeholders'
+import { TextBlock, TextRow, RectShape } from 'react-placeholder/lib/placeholders'
 import 'react-placeholder/lib/reactPlaceholder.css'
 
 // Store
@@ -20,6 +14,7 @@ import Choice from '../components/Choice'
 import Value from '../components/Value'
 import InlineButton from '../components/InlineButton'
 import DecisionTable from '../components/DecisionTable'
+import Header from '../components/Header'
 
 // Blocks
 import Title from '../blocks/Title'
@@ -76,33 +71,16 @@ class Worksheet extends Component {
           <title>{title} WiseDecider Worksheet</title>
         </Head>
         {/* Header */}
-        <div className={'header'}>
-          <div className={'wrapper'}>
-            <div className={'logo'}>
-              <span>Wise</span>
-              <b>Decider</b>
-            </div>
-            <div className={'menu'}>
-              <span className={'save-indicator'}>
-                <Icon className={'save-indicator-icon'}>
-                  {worksheet.isLoading ? 'hourglass_empty' : worksheet.isSaving ? 'sync' : 'cloud'}
-                </Icon>
-                <span className={'save-text'}>
-                  {worksheet.isLoading ? 'Loading...' : worksheet.isSaving ? 'Saving...' : 'Saved'}
-                </span>
-              </span>
-              <a className={'new-btn'} href={'/'} target="_blank">
-                NEW
-              </a>
-            </div>
-            <div className={'profile'}>
-              <img
-                src={'https://cdn-images-1.medium.com/fit/c/64/64/1*UuZygjKcOW9DKNMar0eEYQ.jpeg'}
-                className={'profilePhoto'}
-              />
-            </div>
-          </div>
-        </div>
+        <Header>
+          <span className={'save-indicator'}>
+            <Icon className={'save-indicator-icon'}>
+              {worksheet.isLoading ? 'hourglass_empty' : worksheet.isSaving ? 'sync' : 'cloud'}
+            </Icon>
+            <span className={'save-text'}>
+              {worksheet.isLoading ? 'Loading...' : worksheet.isSaving ? 'Saving...' : 'Saved'}
+            </span>
+          </span>
+        </Header>
 
         {/* Content */}
         <div className={'wrapper'}>
@@ -210,62 +188,6 @@ class Worksheet extends Component {
         <style jsx>{`
           .container {
           }
-          .header {
-            position: sticky;
-            top: 0;
-            min-height: 120px;
-            background-image: linear-gradient(white, rgba(255, 255, 255, 0));
-            z-index: 2;
-            pointer-events: none;
-          }
-          .header .wrapper {
-            display: flex;
-            flex: 1;
-            align-items: center;
-            justify-content: space-between;
-            max-width: 1080px;
-            margin-left: auto;
-            margin-right: auto;
-          }
-          .logo {
-            background: #94bcff;
-            border: none;
-            padding: 20px;
-            padding-right: 32px;
-            padding-left: 32px;
-            border-bottom-right-radius: 6px;
-            border-bottom-left-radius: 6px;
-            pointer-events: auto;
-            cursor: pointer;
-          }
-          .logo span,
-          .logo b {
-            color: white;
-          }
-          .profile {
-            display: flex;
-            justify-self: flex-end;
-            pointer-events: auto;
-            cursor: pointer;
-          }
-          .profilePhoto {
-            border-radius: 50%;
-            width: 32px;
-            height: 32px;
-          }
-          .wrapper {
-            max-width: 960px;
-            margin-left: auto;
-            margin-right: auto;
-          }
-          .menu {
-            flex: 1;
-            padding-left: 20px;
-            padding-right: 20px;
-            justify-content: space-between;
-            align-items: center;
-            display: flex;
-          }
 
           .save-indicator {
             color: #afafaf;
@@ -280,22 +202,6 @@ class Worksheet extends Component {
 
           .save-text {
             margin-left: 6px;
-          }
-
-          .new-btn {
-            border: 2px solid #427dde;
-            background: #ffffffdd;
-            border-radius: 50px;
-            padding: 4px;
-            padding-right: 16px;
-            padding-left: 16px;
-            color: #427dde;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 13px;
-            vertical-align: middle;
-            cursor: pointer;
-            pointer-events: all;
           }
         `}</style>
       </div>
