@@ -9,7 +9,7 @@
     "build": "yarn build:next && yarn build:server",
     "build:next": "next build",
     "build:server": "NODE_ENV=production babel api/index.js --out-dir .next/dist",
-    "start": "NODE_ENV=production node .next/dist/server.js",
+    "start": "NODE_ENV=production node .next/dist/index.js",
     "lint": "eslint --color ./ *.js"
   },
   "babel": {
