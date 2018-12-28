@@ -8,7 +8,7 @@ import { arrayMove } from 'react-sortable-hoc'
 import { BLOCK } from '../constants'
 
 const DEV = true
-const SERVER_HOST = DEV ? 'http://localhost:3000/' : '/'
+const SERVER_HOST = DEV ? 'http://localhost:3000/' : 'http://198.23.164.243:8888/'
 
 const worksheet = store({
   id: null,
