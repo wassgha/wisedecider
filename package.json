@@ -8,7 +8,7 @@
     "dev": "NODE_ENV=development nodemon api/index.js --exec babel-node --presets @babel/preset-env --watch api --watch package.json",
     "build": "yarn build:next && yarn build:server",
     "build:next": "next build",
-    "build:server": "NODE_ENV=production babel api/index.js --out-dir .next/dist",
+    "build:server": "NODE_ENV=production babel index.js routes.js --out-dir .next/dist",
     "start": "yarn build && NODE_ENV=production node .next/dist/index.js",
     "lint": "eslint --color ./ *.js"
   },

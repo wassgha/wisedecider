@@ -7,7 +7,7 @@ require('dotenv').config()
 
 const next = require('next')
 const app = next({ dev: process.env.ENVIRON !== 'prod' })
-const routes = require('../routes')
+const routes = require('./routes')
 const handler = routes.getRequestHandler(app)
 
 const LOCAL_DB = 'nextjs-express-boilerplate'
@@ -34,7 +34,7 @@ app.prepare().then(() => {
   db.on('error', console.error.bind(console, 'connection error:'))
 
   // API routes
-  const rootPath = require('path').normalize(__dirname + '/..')
+  const rootPath = require('path').normalize(__dirname)
   glob
     .sync(rootPath + '/api/routes/*.js')
     .forEach(controllerPath => require(controllerPath)(server))
