@@ -733,13 +733,7 @@
   dependencies:
     regenerator-runtime "^0.12.0"
 
-"@babel/runtime@7.1.2":
-  version "7.1.2"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.1.2.tgz#81c89935f4647706fc54541145e6b4ecfef4b8e3"
-  dependencies:
-    regenerator-runtime "^0.12.0"
-
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.2.0":
+"@babel/runtime@7.2.0", "@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.2.0":
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.2.0.tgz#b03e42eeddf5898e00646e4c840fa07ba8dcad7f"
   dependencies:
@@ -813,12 +807,12 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@material-ui/core@^3.6.2":
-  version "3.6.2"
-  resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-3.6.2.tgz#b1e300ebd717909ffc4c7fd456f48e568156091a"
+"@material-ui/core@^3.7.1":
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-3.7.1.tgz#353845d59489453fb474a4deabdb62a98d0e0ef7"
   dependencies:
-    "@babel/runtime" "7.1.2"
-    "@material-ui/utils" "^3.0.0-alpha.0"
+    "@babel/runtime" "7.2.0"
+    "@material-ui/utils" "^3.0.0-alpha.1"
     "@types/jss" "^9.5.6"
     "@types/react-transition-group" "^2.0.8"
     brcast "^3.0.1"
@@ -829,7 +823,7 @@
     dom-helpers "^3.2.1"
     hoist-non-react-statics "^3.2.1"
     is-plain-object "^2.0.4"
-    jss "^9.3.3"
+    jss "^9.8.7"
     jss-camel-case "^6.0.0"
     jss-default-unit "^8.0.2"
     jss-global "^3.0.0"
@@ -845,15 +839,14 @@
     recompose "0.28.0 - 0.30.0"
     warning "^4.0.1"
 
-"@material-ui/styles@^3.0.0-alpha.3":
-  version "3.0.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/@material-ui/styles/-/styles-3.0.0-alpha.3.tgz#85bd94245d6837628a8e528ba1502cbdd2b12207"
+"@material-ui/styles@^3.0.0-alpha.4":
+  version "3.0.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/@material-ui/styles/-/styles-3.0.0-alpha.4.tgz#ca4603d9cb5ac9612c9531f99fb46feac7ae91a7"
   dependencies:
-    "@babel/runtime" "7.1.2"
-    "@material-ui/utils" "^3.0.0-alpha.0"
+    "@babel/runtime" "7.2.0"
+    "@material-ui/utils" "^3.0.0-alpha.1"
     classnames "^2.2.5"
     deepmerge "^3.0.0"
-    hoist-non-react-statics "^3.2.1"
     jss "^9.3.3"
     jss-camel-case "^6.0.0"
     jss-default-unit "^8.0.2"
@@ -864,11 +857,12 @@
     prop-types "^15.6.0"
     warning "^4.0.1"
 
-"@material-ui/utils@^3.0.0-alpha.0":
-  version "3.0.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/@material-ui/utils/-/utils-3.0.0-alpha.0.tgz#506fcaf531a9a8f58a73ff2d3dfaa36c0f238506"
+"@material-ui/utils@^3.0.0-alpha.1":
+  version "3.0.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/@material-ui/utils/-/utils-3.0.0-alpha.1.tgz#4080d4c03eff439c31765c5ffc3d860ceb3dffc0"
   dependencies:
-    "@babel/runtime" "7.1.2"
+    "@babel/runtime" "7.2.0"
+    react-is "^16.6.3"
 
 "@nx-js/observer-util@^4.1.1", "@nx-js/observer-util@^4.2.0":
   version "4.2.0"
@@ -902,6 +896,13 @@
 "@types/react@*", "@types/react@^16.0.40":
   version "16.7.17"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.7.17.tgz#3242e796a1ffbba4f49eae5915a67f4c079504e9"
+  dependencies:
+    "@types/prop-types" "*"
+    csstype "^2.2.0"
+
+"@types/react@^16.4.18":
+  version "16.7.18"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.7.18.tgz#f4ce0d539a893dd61e36cd11ae3a5e54f5a48337"
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
@@ -2265,6 +2266,13 @@ create-react-class@^15.6.0:
     loose-envify "^1.3.1"
     object-assign "^4.1.1"
 
+create-react-context@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/create-react-context/-/create-react-context-0.2.3.tgz#9ec140a6914a22ef04b8b09b7771de89567cb6f3"
+  dependencies:
+    fbjs "^0.8.0"
+    gud "^1.0.0"
+
 cross-spawn@5.1.0, cross-spawn@^5.0.1:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-5.1.0.tgz#e8bd0efee58fcff6f8f94510a0a554bbfa235449"
@@ -2345,6 +2353,12 @@ css-selector-tokenizer@^0.7.0:
 css-vendor@^0.3.8:
   version "0.3.8"
   resolved "https://registry.yarnpkg.com/css-vendor/-/css-vendor-0.3.8.tgz#6421cfd3034ce664fe7673972fd0119fc28941fa"
+  dependencies:
+    is-in-browser "^1.0.2"
+
+css-vendor@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/css-vendor/-/css-vendor-1.1.0.tgz#39bc1bb46b633528a9041ad5e107ddd353240388"
   dependencies:
     is-in-browser "^1.0.2"
 
@@ -3004,7 +3018,7 @@ fastparse@^1.1.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/fastparse/-/fastparse-1.1.2.tgz#91728c5a5942eced8531283c79441ee4122c35a9"
 
-fbjs@^0.8.1, fbjs@^0.8.9:
+fbjs@^0.8.0, fbjs@^0.8.1, fbjs@^0.8.9:
   version "0.8.17"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.17.tgz#c4d598ead6949112653d6588b01a5cdcd9f90fdd"
   dependencies:
@@ -3382,6 +3396,10 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.4:
   version "4.1.15"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.15.tgz#ffb703e1066e8a0eeaa4c8b80ba9253eeefbfb00"
 
+gud@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/gud/-/gud-1.0.0.tgz#a489581b17e6a70beca9abe3ae57de7a499852c0"
+
 har-schema@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/har-schema/-/har-schema-2.0.0.tgz#a94c2224ebcac04782a0d9035521f24735b7ec92"
@@ -3470,7 +3488,7 @@ hoist-non-react-statics@2.5.5, hoist-non-react-statics@^2.3.1:
   version "2.5.5"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.5.5.tgz#c5903cf409c0dfd908f388e619d86b9c1174cb47"
 
-hoist-non-react-statics@^3.2.1:
+hoist-non-react-statics@^3.1.0, hoist-non-react-statics@^3.2.0, hoist-non-react-statics@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.2.1.tgz#c09c0555c84b38a7ede6912b61efddafd6e75e1e"
   dependencies:
@@ -4059,6 +4077,103 @@ jss-nested@^6.0.1:
   dependencies:
     warning "^3.0.0"
 
+jss-plugin-camel-case@^10.0.0-alpha.3:
+  version "10.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/jss-plugin-camel-case/-/jss-plugin-camel-case-10.0.0-alpha.3.tgz#719af2fbcaa45708a6e898f42ecbe20f8e47ce34"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    hyphenate-style-name "^1.0.2"
+
+jss-plugin-compose@^10.0.0-alpha.3:
+  version "10.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/jss-plugin-compose/-/jss-plugin-compose-10.0.0-alpha.3.tgz#a9000744679839019246246d1d3724c419deab69"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    warning "^3.0.0"
+
+jss-plugin-default-unit@^10.0.0-alpha.3:
+  version "10.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/jss-plugin-default-unit/-/jss-plugin-default-unit-10.0.0-alpha.3.tgz#bf29bec9edf8a95a8b9ddb77eb181bfa9e446a4b"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+
+jss-plugin-expand@^10.0.0-alpha.3:
+  version "10.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/jss-plugin-expand/-/jss-plugin-expand-10.0.0-alpha.3.tgz#3e1d285548f383b3457958a60a5834f0c9308254"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+
+jss-plugin-extend@^10.0.0-alpha.3:
+  version "10.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/jss-plugin-extend/-/jss-plugin-extend-10.0.0-alpha.3.tgz#79a7a297baf12d6ac1aec08a1a2ad48fbeebeb69"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    warning "^3.0.0"
+
+jss-plugin-global@^10.0.0-alpha.3:
+  version "10.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/jss-plugin-global/-/jss-plugin-global-10.0.0-alpha.3.tgz#199f194f187c8de978c960306460f0e21c6e63bb"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+
+jss-plugin-nested@^10.0.0-alpha.3:
+  version "10.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/jss-plugin-nested/-/jss-plugin-nested-10.0.0-alpha.3.tgz#15122a55a36aca8cd69d7ae3161f5b2b28a5df23"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    warning "^3.0.0"
+
+jss-plugin-props-sort@^10.0.0-alpha.3:
+  version "10.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/jss-plugin-props-sort/-/jss-plugin-props-sort-10.0.0-alpha.3.tgz#a71ef39f077385e6624d0ac4d2dac1e36ccedf8f"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+
+jss-plugin-rule-value-function@^10.0.0-alpha.3:
+  version "10.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/jss-plugin-rule-value-function/-/jss-plugin-rule-value-function-10.0.0-alpha.3.tgz#2dbd360ca42fa7a1dc7799ec5b4ca33c8ba75d68"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+
+jss-plugin-rule-value-observable@^10.0.0-alpha.3:
+  version "10.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/jss-plugin-rule-value-observable/-/jss-plugin-rule-value-observable-10.0.0-alpha.3.tgz#0c4874cbea3129347f273590bfcb74553de5d781"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    symbol-observable "^1.2.0"
+
+jss-plugin-template@^10.0.0-alpha.3:
+  version "10.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/jss-plugin-template/-/jss-plugin-template-10.0.0-alpha.3.tgz#14ab3a3889ee7ddfd96b2bbe3929d6962ffec177"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    warning "^3.0.0"
+
+jss-plugin-vendor-prefixer@^10.0.0-alpha.3:
+  version "10.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/jss-plugin-vendor-prefixer/-/jss-plugin-vendor-prefixer-10.0.0-alpha.3.tgz#9402007555542ad810a66a5c2b7527683c8dc719"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    css-vendor "^1.1.0"
+
+jss-preset-default@^10.0.0-alpha.3:
+  version "10.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/jss-preset-default/-/jss-preset-default-10.0.0-alpha.3.tgz#afbcd30acf625a0c15aaa9e7656eaa9a88379725"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    jss-plugin-camel-case "^10.0.0-alpha.3"
+    jss-plugin-compose "^10.0.0-alpha.3"
+    jss-plugin-default-unit "^10.0.0-alpha.3"
+    jss-plugin-expand "^10.0.0-alpha.3"
+    jss-plugin-extend "^10.0.0-alpha.3"
+    jss-plugin-global "^10.0.0-alpha.3"
+    jss-plugin-nested "^10.0.0-alpha.3"
+    jss-plugin-props-sort "^10.0.0-alpha.3"
+    jss-plugin-rule-value-function "^10.0.0-alpha.3"
+    jss-plugin-rule-value-observable "^10.0.0-alpha.3"
+    jss-plugin-template "^10.0.0-alpha.3"
+    jss-plugin-vendor-prefixer "^10.0.0-alpha.3"
+
 jss-props-sort@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/jss-props-sort/-/jss-props-sort-6.0.0.tgz#9105101a3b5071fab61e2d85ea74cc22e9b16323"
@@ -4069,7 +4184,16 @@ jss-vendor-prefixer@^7.0.0:
   dependencies:
     css-vendor "^0.3.8"
 
-jss@^9.3.3:
+jss@^10.0.0-alpha.3:
+  version "10.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/jss/-/jss-10.0.0-alpha.3.tgz#e7c9d8f45337f2278e2879bb1c6ac5fd16a63c08"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    is-in-browser "^1.1.3"
+    symbol-observable "^1.2.0"
+    warning "^3.0.0"
+
+jss@^9.3.3, jss@^9.8.7:
   version "9.8.7"
   resolved "https://registry.yarnpkg.com/jss/-/jss-9.8.7.tgz#ed9763fc0f2f0260fc8260dac657af61e622ce05"
   dependencies:
@@ -5642,6 +5766,10 @@ react-contenteditable@^3.2.3:
     "@types/prop-types" "^15.5.6"
     fast-deep-equal "^2.0.1"
 
+react-display-name@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/react-display-name/-/react-display-name-0.2.4.tgz#e2a670b81d79a2204335510c01246f4c92ff12cf"
+
 react-dom@^15.0.2:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.6.2.tgz#41cfadf693b757faf2708443a1d1fd5a02bef730"
@@ -5706,6 +5834,18 @@ react-joyride@^1.11.4:
   dependencies:
     nested-property "^0.0.7"
     scroll "^2.0.3"
+
+react-jss@^10.0.0-alpha.3:
+  version "10.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/react-jss/-/react-jss-10.0.0-alpha.3.tgz#ed2677008c0169c4afb235f59b4ea367ddbb73e5"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    "@types/react" "^16.4.18"
+    hoist-non-react-statics "^3.2.0"
+    jss "^10.0.0-alpha.3"
+    jss-preset-default "^10.0.0-alpha.3"
+    prop-types "^15.6.0"
+    theming "^2.2.0"
 
 react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
@@ -6899,6 +7039,17 @@ text-table@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
 
+theming@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/theming/-/theming-2.2.0.tgz#64fe667afc5fb742060dd084fe4af6fac1227a97"
+  dependencies:
+    "@types/react" "^16.4.18"
+    create-react-context "^0.2.3"
+    hoist-non-react-statics "^3.1.0"
+    prop-types "^15.5.8"
+    react-display-name "^0.2.4"
+    warning "^4.0.2"
+
 through2@^2.0.0:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.5.tgz#01c1e39eb31d07cb7d03a96a70823260b23132cd"
@@ -7263,7 +7414,7 @@ warning@^3.0.0:
   dependencies:
     loose-envify "^1.0.0"
 
-warning@^4.0.1:
+warning@^4.0.1, warning@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/warning/-/warning-4.0.2.tgz#aa6876480872116fa3e11d434b0d0d8d91e44607"
   dependencies:
