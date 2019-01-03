@@ -97,6 +97,12 @@ class Header extends Component {
             align-self: flex-end;
             margin-left: auto;
           }
+          @media (max-width: 600px) {
+            .logo {
+              padding-right: 20px;
+              padding-left: 20px;
+            }
+          }
         `}</style>
       </div>
     )

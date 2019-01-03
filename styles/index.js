@@ -22,6 +22,10 @@ body {
   line-height: 2;
 }
 
+h1, h2, h3, h4, h5 {
+  line-height: normal;
+}
+
 [contenteditable='true']:empty:before {
   content: attr(placeholder);
   display: block;
@@ -32,6 +36,8 @@ body {
   max-width: 960px;
   margin-left: auto;
   margin-right: auto;
+  padding-right: 16px;
+  padding-left: 16px;
 }
 
 .cell {
