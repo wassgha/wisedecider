@@ -1,8 +1,8 @@
 {
-  "name": "timeline_assignment",
+  "name": "wisedecider",
   "version": "0.1.0",
   "private": true,
-  "description": "Airtable Interview",
+  "description": "WiseDecider Decision-making tool",
   "author": "Wassim Gharbi",
   "scripts": {
     "dev": "NODE_ENV=development nodemon api/index.js --exec babel-node --presets @babel/preset-env --watch api --watch package.json",
@@ -106,7 +106,7 @@
     "@babel/cli": "^7.0.0-beta.44",
     "@babel/core": "^7.0.0-beta.44",
     "@babel/node": "^7.0.0-beta.44",
-    "@babel/preset-env": "^7.0.0-beta.44",
+    "@babel/preset-env": "^7.2.3",
     "nodemon": "^1.17.5"
   }
 }
