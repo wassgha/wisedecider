@@ -23,7 +23,7 @@
         "presets": [
           "next/babel",
           [
-            "@babel/env",
+            "@babel/preset-env",
             {
               "targets": {
                 "node": "8"
