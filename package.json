@@ -5,7 +5,7 @@
   "description": "WiseDecider Decision-making tool",
   "author": "Wassim Gharbi",
   "scripts": {
-    "dev": "NODE_ENV=development nodemon api/index.js --exec babel-node --presets @babel/preset-env --watch api --watch package.json",
+    "dev": "NODE_ENV=development nodemon index.js --exec babel-node --presets @babel/preset-env --watch api --watch package.json",
     "build": "yarn build:next && yarn build:server",
     "build:next": "next build",
     "build:server": "NODE_ENV=production babel index.js routes.js --out-dir .next/dist",
@@ -105,7 +105,7 @@
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.44",
     "@babel/core": "^7.0.0-beta.44",
-    "@babel/node": "^7.0.0-beta.44",
+    "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
     "nodemon": "^1.17.5"
   }
