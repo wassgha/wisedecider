@@ -5,7 +5,8 @@ import _ from 'lodash'
 import axios from 'axios'
 import { arrayMove } from 'react-sortable-hoc'
 
-import { BLOCK, SERVER_HOST } from '../constants'
+import { BLOCK } from '../constants'
+import { SERVER_HOST } from '../index'
 
 const worksheet = store({
   id: null,

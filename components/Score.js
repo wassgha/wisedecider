@@ -3,7 +3,7 @@ import ContentEditable from 'react-contenteditable'
 import StarRatingComponent from 'react-star-rating-component'
 
 // Store
-import worksheet from '../stores/worksheetStore'
+import worksheet from '../store'
 
 class Score extends Component {
   render() {

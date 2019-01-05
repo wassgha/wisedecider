@@ -8,7 +8,7 @@ import FormGroup from '@material-ui/core/FormGroup'
 import InputLabel from '@material-ui/core/InputLabel'
 
 // Store
-import worksheet from '../stores/worksheetStore'
+import worksheet from '../store'
 
 // Components
 import Dialog from '../components/Dialog'

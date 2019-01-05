@@ -5,7 +5,7 @@ import sanitizeHtml from 'sanitize-html'
 import ReactDOMServer from 'react-dom/server'
 
 // Store
-import worksheet from '../stores/worksheetStore'
+import worksheet from '../store'
 
 // Components
 import Choice from '../components/Choice'

@@ -4,7 +4,7 @@ import { view, store } from 'react-easy-state'
 import sanitizeHtml from 'sanitize-html'
 
 // Store
-import worksheet from '../stores/worksheetStore'
+import worksheet from '../store'
 
 // Components
 import Block from '../components/Block'

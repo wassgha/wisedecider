@@ -6,7 +6,7 @@ import ReactDOMServer from 'react-dom/server'
 import { Editor, EditorState, RichUtils } from 'draft-js'
 
 // Store
-import worksheet from '../stores/worksheetStore'
+import worksheet from '../store'
 
 // Components
 import Choice from '../components/Choice'

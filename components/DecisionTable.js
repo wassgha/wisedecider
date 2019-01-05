@@ -5,7 +5,7 @@ import { view } from 'react-easy-state'
 import _ from 'lodash'
 
 // Store
-import worksheet from '../stores/worksheetStore'
+import worksheet from '../store'
 
 // Components
 import Value from './Value'

@@ -5,7 +5,7 @@ import { Editor } from 'slate-react'
 import { KeyUtils, Value } from 'slate'
 
 // Store
-import worksheet from '../stores/worksheetStore'
+import worksheet from '../store'
 
 // Components
 import InlineChoice from '../components/Choice'

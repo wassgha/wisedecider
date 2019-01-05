@@ -7,7 +7,7 @@ import TextField from '@material-ui/core/TextField'
 import FormGroup from '@material-ui/core/FormGroup'
 
 // Store
-import worksheet from '../stores/worksheetStore'
+import worksheet from '../store'
 
 // Components
 import Dialog from '../components/Dialog'

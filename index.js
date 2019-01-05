@@ -13,6 +13,7 @@ const handler = routes.getRequestHandler(app)
 const LOCAL_DB = 'nextjs-express-boilerplate'
 const MONGODB_URI = process.env.MONGODB_URI || `mongodb://localhost/${LOCAL_DB}`
 const PORT = process.env.PORT || 3001
+export const SERVER_HOST = process.env.SERVER_HOST || `http://localhost:3000/`
 
 app.prepare().then(() => {
   // Parse application/x-www-form-urlencoded

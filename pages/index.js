@@ -6,7 +6,7 @@ import _ from 'lodash'
 import randomColor from 'randomcolor'
 
 // Constants
-import { SERVER_HOST } from '../constants'
+import { SERVER_HOST } from '../index'
 
 // Components
 import Header from '../components/Header'

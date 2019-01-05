@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Router from 'next/router'
 
 // Store
-import worksheet from '../stores/worksheetStore'
+import worksheet from '../store'
 
 // Components
 import Worksheet from '../components/Worksheet'

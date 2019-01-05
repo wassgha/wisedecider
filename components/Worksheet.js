@@ -7,7 +7,7 @@ import { TextBlock, TextRow, RectShape } from 'react-placeholder/lib/placeholder
 import 'react-placeholder/lib/reactPlaceholder.css'
 
 // Store
-import worksheet from '../stores/worksheetStore'
+import worksheet from '../store'
 
 // Components
 import Choice from '../components/Choice'
