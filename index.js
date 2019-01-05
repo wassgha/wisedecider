@@ -3,17 +3,13 @@ const server = express()
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const glob = require('glob')
-require('dotenv').config()
 
 const next = require('next')
 const app = next({ dev: process.env.ENVIRON !== 'prod' })
 const routes = require('./routes')
 const handler = routes.getRequestHandler(app)
 
-const LOCAL_DB = 'nextjs-express-boilerplate'
-const MONGODB_URI = process.env.MONGODB_URI || `mongodb://localhost/${LOCAL_DB}`
-const PORT = process.env.PORT || 3001
-export const SERVER_HOST = process.env.SERVER_HOST || `http://localhost:3000/`
+const Constants = require('./constants')
 
 app.prepare().then(() => {
   // Parse application/x-www-form-urlencoded
@@ -30,7 +26,7 @@ app.prepare().then(() => {
 
   // MongoDB
   mongoose.Promise = Promise
-  mongoose.connect(MONGODB_URI)
+  mongoose.connect(Constants.MONGODB_URI)
   const db = mongoose.connection
   db.on('error', console.error.bind(console, 'connection error:'))
 
@@ -52,9 +48,11 @@ app.prepare().then(() => {
   server.get('/', customRequestHandler.bind(undefined, '/'))
   server.get('*', handler)
 
-  server.listen(PORT, function() {
+  server.listen(Constants.PORT, function() {
     console.log(
-      `App running on http://localhost:${PORT}/\nAPI running on http://localhost:${PORT}/api/`
+      `App running on http://localhost:${Constants.PORT}/\nAPI running on http://localhost:${
+        Constants.PORT
+      }/api/`
     )
   })
 })
