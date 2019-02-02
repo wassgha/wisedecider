@@ -28,6 +28,12 @@ class IndexPage extends Component {
     return { data }
   }
 
+  deleteWorksheet(id) {
+    if (!id) return
+    axios.delete(`${SERVER_HOST}api/worksheet/${id}`)
+    if (window) window.location.reload(false)
+  }
+
   render() {
     const { data } = this.props
     return (
@@ -60,7 +66,7 @@ class IndexPage extends Component {
                       secondary={'Draft'}
                     />
                     <ListItemSecondaryAction>
-                      <IconButton>
+                      <IconButton onClick={() => this.deleteWorksheet(worksheet._id)}>
                         <Icon>{'delete'}</Icon>
                       </IconButton>
                     </ListItemSecondaryAction>

@@ -17,7 +17,7 @@ class Header extends Component {
           </Link>
           <div className={'menu'}>
             {children}
-            <a className={'new-btn'} href={'/'} target="_blank">
+            <a className={'new-btn'} href={'/worksheet'} target="_blank">
               NEW
             </a>
           </div>
