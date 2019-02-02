@@ -57,7 +57,11 @@ class IndexPage extends Component {
                 <Link href={`/worksheet/${worksheet._id}`} passHref>
                   <ListItem component={'a'} button>
                     <ListItemAvatar>
-                      <Avatar style={{ backgroundColor: randomColor({ luminosity: 'dark' }) }}>
+                      <Avatar
+                        style={{
+                          backgroundColor: worksheet.color || randomColor({ luminosity: 'dark' })
+                        }}
+                      >
                         <Icon>{'insert_drive_file'}</Icon>
                       </Avatar>
                     </ListItemAvatar>

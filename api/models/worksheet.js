@@ -26,7 +26,8 @@ const worksheetSchema = new Schema({
       name: { type: String, required: true, default: 'Value' }
     }
   ],
-  scores: Schema.Types.Mixed
+  scores: Schema.Types.Mixed,
+  color: { type: String, required: false, default: () => randomColor({ luminosity: 'dark' }) }
 })
 
 module.exports = mongoose.model('Worksheet', worksheetSchema)
