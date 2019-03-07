@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "node server.js",
+    "start": "NODE_ENV=dev node server.js",
     "lint": "eslint --color ./ *.js",
     "test": "echo \"No test specified yet.\" && exit 0"
   },
