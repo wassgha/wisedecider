@@ -7,19 +7,33 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
+    "start": "node server.js",
     "lint": "eslint --color ./ *.js",
     "test": "echo \"No test specified yet.\" && exit 0"
+  },
+  "babel": {
+    "env": {
+      "development": {
+        "presets": [
+          "next/babel"
+        ]
+      },
+      "production": {
+        "presets": [
+          "next/babel"
+        ]
+      }
+    }
   },
   "dependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "7.3.4",
     "@material-ui/core": "^3.6.2",
-    "@material-ui/styles": "^3.0.0-alpha.3",
     "@zeit/next-css": "^1.0.1",
     "autoprefixer": "^9.0.1",
     "axios": "^0.18.0",
     "babel-eslint": "^10.0.1",
+    "babel-plugin-styled-components": "^1.10.0",
     "color": "^3.1.0",
     "dotenv": "^6.2.0",
     "eslint": "^5.2.0",
@@ -47,7 +61,7 @@
     "react-easy-params": "^2.0.2",
     "react-easy-state": "^6.0.6",
     "react-joyride": "^2.0.5",
-    "react-jss": "^8.6.1",
+    "react-jss": "<=8.6.1",
     "react-placeholder": "^3.0.1",
     "react-rating": "^1.6.1",
     "react-redux": "^6.0.0",

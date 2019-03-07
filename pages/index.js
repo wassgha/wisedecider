@@ -17,6 +17,9 @@ import ListItemText from '@material-ui/core/ListItemText'
 import Avatar from '@material-ui/core/Avatar'
 import IconButton from '@material-ui/core/IconButton'
 import Icon from '@material-ui/core/Icon'
+import { withStyles } from '@material-ui/core/styles'
+
+const styles = () => ({})
 
 class IndexPage extends Component {
   static async getInitialProps() {
@@ -83,4 +86,4 @@ class IndexPage extends Component {
   }
 }
 
-export default IndexPage
+export default withStyles(styles)(IndexPage)
