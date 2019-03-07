@@ -1,7 +1,7 @@
-import { BLOCK } from '../../constants'
-import shortid from 'shortid'
-import mongoose from 'mongoose'
-import randomColor from 'randomcolor'
+const Constants = require('../../constants')
+const shortid = require('shortid')
+const mongoose = require('mongoose')
+const randomColor = require('randomcolor')
 
 const Schema = mongoose.Schema
 
@@ -9,7 +9,7 @@ const worksheetSchema = new Schema({
   blocks: [
     {
       id: { type: String, required: true, default: shortid.generate },
-      type: { type: String, enum: Object.values(BLOCK), required: true },
+      type: { type: String, enum: Object.values(Constants.BLOCK), required: true },
       data: { type: Schema.Types.Mixed }
     }
   ],

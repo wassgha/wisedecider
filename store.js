@@ -1,11 +1,13 @@
-import { store } from 'react-easy-state'
-import shortid from 'shortid'
-import randomColor from 'randomcolor'
-import _ from 'lodash'
-import axios from 'axios'
-import { arrayMove } from 'react-sortable-hoc'
+const ReactEasyState = require('react-easy-state')
+const store = ReactEasyState.store
+const shortid = require('shortid')
+const randomColor = require('randomcolor')
+const _ = require('lodash')
+const axios = require('axios')
+const ReactSortableHOC = require('react-sortable-hoc')
+const arrayMove = ReactSortableHOC.arrayMove
 
-import { BLOCK, SERVER_HOST } from './constants'
+const Constants = require('./constants')
 
 const worksheet = store({
   id: null,
@@ -17,7 +19,7 @@ const worksheet = store({
   isSaving: false,
   async load(id) {
     worksheet.isLoading = true
-    const { data } = await axios.get(`${SERVER_HOST}api/worksheet/${id}`)
+    const { data } = await axios.get(`${process.env.SERVER_HOST}api/worksheet/${id}`)
     worksheet.id = id
     worksheet.blocks = data.blocks || []
     worksheet.choices = data.choices || []
@@ -28,13 +30,13 @@ const worksheet = store({
   },
   async new() {
     worksheet.isLoading = true
-    const createdWorksheet = await axios.post(`${SERVER_HOST}api/worksheet`)
+    const createdWorksheet = await axios.post(`${process.env.SERVER_HOST}api/worksheet`)
     const id = createdWorksheet.data._id
     worksheet.id = id
     worksheet.blocks = [
       {
         id: shortid.generate(),
-        type: BLOCK.TITLE,
+        type: Constants.BLOCK.TITLE,
         data: {
           placeholder: 'Insert decision name here...'
           // tag: 'h1',
@@ -43,7 +45,7 @@ const worksheet = store({
       },
       {
         id: shortid.generate(),
-        type: BLOCK.TEXT,
+        type: Constants.BLOCK.TEXT,
         data: {
           placeholder:
             'Use this paragraph to describe the decision you are trying to make and any important background information related to the decision...'
@@ -134,7 +136,7 @@ const worksheet = store({
     }
     worksheet.isLoading = false
   },
-  addBlock(type = BLOCK.TEXT, data = {}, index = worksheet.blocks.length) {
+  addBlock(type = Constants.BLOCK.TEXT, data = {}, index = worksheet.blocks.length) {
     const id = shortid.generate()
     worksheet.blocks.splice(index, 0, { id, type, data })
     worksheet.save()
@@ -247,11 +249,11 @@ const worksheet = store({
     //   storage.worksheet = worksheet
     // }
     worksheet.isSaving = true
-    await axios.put(`${SERVER_HOST}api/worksheet/${worksheet.id}`, {
+    await axios.put(`${process.env.SERVER_HOST}api/worksheet/${worksheet.id}`, {
       ...worksheet
     })
     worksheet.isSaving = false
   }, 500)
 })
 
-export default worksheet
+module.exports = worksheet

@@ -5,85 +5,54 @@
   "description": "WiseDecider Decision-making tool",
   "author": "Wassim Gharbi",
   "scripts": {
-    "dev": "NODE_ENV=development nodemon index.js --exec babel-node --optimize_for_size --max_old_space_size=460 --presets @babel/preset-env --watch api --watch package.json",
-    "build": "yarn build:next && yarn build:server",
-    "build:next": "next build",
-    "build:server": "NODE_ENV=production babel index.js routes.js --out-dir .next/dist",
-    "prod": "yarn build && NODE_ENV=production node .next/dist/index.js",
-    "start": "yarn dev",
-    "lint": "eslint --color ./ *.js"
-  },
-  "babel": {
-    "env": {
-      "development": {
-        "presets": [
-          "next/babel"
-        ]
-      },
-      "production": {
-        "presets": [
-          "next/babel",
-          [
-            "@babel/preset-env",
-            {
-              "targets": {
-                "node": "8"
-              }
-            }
-          ]
-        ]
-      }
-    }
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js",
+    "lint": "eslint --color ./ *.js",
+    "test": "echo \"No test specified yet.\" && exit 0",
+    "heroku-postbuild": "next build"
   },
   "dependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "7.3.4",
     "@material-ui/core": "^3.6.2",
     "@material-ui/styles": "^3.0.0-alpha.3",
+    "@zeit/next-css": "^1.0.1",
     "autoprefixer": "^9.0.1",
     "axios": "^0.18.0",
-    "babel-cli": "^7.0.0-beta.3",
-    "babel-core": "^7.0.0-beta.44",
     "babel-eslint": "^10.0.1",
-    "babel-loader": "^8.0.4",
-    "babel-plugin-transform-define": "^1.3.0",
     "color": "^3.1.0",
-    "css-loader": "^2.0.1",
     "dotenv": "^6.2.0",
     "eslint": "^5.2.0",
     "eslint-plugin-react": "^7.10.0",
     "express": "^4.16.3",
-    "file-loader": "^2.0.0",
     "immutable": "^4.0.0-rc.12",
-    "less": "^3.8.0",
-    "less-loader": "^4.1.0",
-    "less-plugin-rewrite-import": "^0.1.1",
+    "jss": "^9.8.7",
     "lodash": "^4.17.10",
     "mdi-react": "^5.1.0",
     "moment": "^2.22.2",
     "moment-range": "^4.0.1",
     "mongoose": "^5.4.0",
     "mongoose-crudify": "^0.2.0",
-    "next": "^7.0.2",
-    "next-redux-wrapper": "^2.0.0",
+    "next": "^8.0.3",
+    "next-redux-wrapper": "^3.0.0-alpha.2",
     "next-routes": "^1.4.2",
     "node-sass": "^4.9.2",
     "nodemon": "^1.18.9",
-    "postcss-easy-import": "^3.0.0",
-    "postcss-loader": "^3.0.0",
     "randomcolor": "^0.5.3",
-    "raw-loader": "^1.0.0",
     "react": "^16.6.3",
     "react-color": "^2.14.1",
-    "react-content-loader": "^3.4.1",
     "react-contenteditable": "^3.2.3",
     "react-dom": "^16.6.3",
     "react-draggable": "^3.0.5",
     "react-easy-params": "^2.0.2",
     "react-easy-state": "^6.0.6",
-    "react-joyride": "^1.11.4",
+    "react-joyride": "^2.0.5",
+    "react-jss": "^8.6.1",
     "react-placeholder": "^3.0.1",
     "react-rating": "^1.6.1",
     "react-redux": "^6.0.0",
-    "react-sortable-hoc": "^0.8.3",
+    "react-sortable-hoc": "^1.7.1",
     "react-star-rating-component": "^1.4.1",
     "react-table": "^6.8.6",
     "react-throttle": "^0.3.0",
@@ -92,21 +61,13 @@
     "redux-persist": "^5.10.0",
     "redux-thunk": "^2.3.0",
     "sanitize-html": "^1.19.3",
-    "sass-loader": "^7.0.3",
     "shortid": "^2.2.14",
     "slate": "^0.44.9",
     "slate-plain-serializer": "^0.6.33",
     "slate-react": "^0.21.15",
     "slate-react-placeholder": "^0.1.12",
-    "style-loader": "^0.23.1",
     "uniq": "^1.0.1",
-    "url-loader": "^1.0.1",
-    "uuid": "^3.3.2",
-    "webpack": "^4.16.3",
-    "@babel/cli": "^7.0.0-beta.44",
-    "@babel/core": "^7.0.0-beta.44",
-    "@babel/node": "^7.2.2",
-    "@babel/preset-env": "^7.2.3",
-    "nodemon": "^1.17.5"
-  }
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {}
 }

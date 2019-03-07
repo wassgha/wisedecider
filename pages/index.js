@@ -5,9 +5,6 @@ import Link from 'next/link'
 import _ from 'lodash'
 import randomColor from 'randomcolor'
 
-// Constants
-import { SERVER_HOST } from '../constants'
-
 // Components
 import Header from '../components/Header'
 
@@ -17,20 +14,21 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemAvatar from '@material-ui/core/ListItemAvatar'
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import ListItemText from '@material-ui/core/ListItemText'
-import ListSubheader from '@material-ui/core/ListSubheader'
 import Avatar from '@material-ui/core/Avatar'
 import IconButton from '@material-ui/core/IconButton'
 import Icon from '@material-ui/core/Icon'
 
 class IndexPage extends Component {
-  static async getInitialProps({ res, query }) {
-    const { data } = await axios.get(`${SERVER_HOST}api/worksheet`)
-    return { data }
+  static async getInitialProps() {
+    const { data } = await axios.get(`${process.env.SERVER_HOST}api/worksheet`)
+    return {
+      data
+    }
   }
 
   deleteWorksheet(id) {
     if (!id) return
-    axios.delete(`${SERVER_HOST}api/worksheet/${id}`)
+    axios.delete(`${process.env.SERVER_HOST}api/worksheet/${id}`)
     if (window) window.location.reload(false)
   }
 

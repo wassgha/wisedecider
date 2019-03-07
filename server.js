@@ -1,3 +1,5 @@
+const Keys = require('./keys')
+
 const express = require('express')
 const server = express()
 const bodyParser = require('body-parser')
@@ -5,11 +7,9 @@ const mongoose = require('mongoose')
 const glob = require('glob')
 
 const next = require('next')
-const app = next({ dev: process.env.ENVIRON !== 'prod' })
+const app = next({ dev: Keys.ENVIRON !== 'prod' })
 const routes = require('./routes')
 const handler = routes.getRequestHandler(app)
-
-const Constants = require('./constants')
 
 app.prepare().then(() => {
   // Parse application/x-www-form-urlencoded
@@ -26,7 +26,10 @@ app.prepare().then(() => {
 
   // MongoDB
   mongoose.Promise = Promise
-  mongoose.connect(Constants.MONGODB_URI)
+  mongoose.connect(
+    Keys.MONGODB_URI,
+    { useNewUrlParser: true }
+  )
   const db = mongoose.connection
   db.on('error', console.error.bind(console, 'connection error:'))
 
@@ -48,10 +51,10 @@ app.prepare().then(() => {
   server.get('/', customRequestHandler.bind(undefined, '/'))
   server.get('*', handler)
 
-  server.listen(Constants.PORT, function() {
+  server.listen(Keys.PORT, function() {
     console.log(
-      `App running on http://localhost:${Constants.PORT}/\nAPI running on http://localhost:${
-        Constants.PORT
+      `App running on http://localhost:${Keys.PORT}/\nAPI running on http://localhost:${
+        Keys.PORT
       }/api/`
     )
   })

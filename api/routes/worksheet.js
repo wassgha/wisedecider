@@ -1,7 +1,7 @@
-import mongooseCrudify from 'mongoose-crudify'
+const mongooseCrudify = require('mongoose-crudify')
 
-import helpers from '../services/helpers'
-import Worksheet from '../models/worksheet'
+const helpers = require('../services/helpers')
+const Worksheet = require('../models/worksheet')
 
 module.exports = function(server) {
   // Docs: https://github.com/ryo718/mongoose-crudify
