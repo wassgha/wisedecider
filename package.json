@@ -9,8 +9,7 @@
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
     "lint": "eslint --color ./ *.js",
-    "test": "echo \"No test specified yet.\" && exit 0",
-    "heroku-postbuild": "next build"
+    "test": "echo \"No test specified yet.\" && exit 0"
   },
   "dependencies": {
     "@babel/cli": "^7.2.3",
