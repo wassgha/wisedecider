@@ -7,6 +7,8 @@ import randomColor from 'randomcolor'
 
 // Components
 import Header from '../components/Header'
+import Layout from '../components/Layout'
+import Wrapper from '../components/Wrapper'
 
 // Material UI Components
 import List from '@material-ui/core/List'
@@ -38,13 +40,13 @@ class IndexPage extends Component {
   render() {
     const { data } = this.props
     return (
-      <div className={'container'}>
+      <Layout>
         <Head>
           <title>WiseDecider Worksheets</title>
         </Head>
         {/* Header */}
         <Header />
-        <div className={'wrapper'}>
+        <Wrapper>
           <h2>Your Worksheets</h2>
           <List component="nav" disablePadding={true}>
             {data.map(worksheet => {
@@ -80,8 +82,8 @@ class IndexPage extends Component {
               )
             })}
           </List>
-        </div>
-      </div>
+        </Wrapper>
+      </Layout>
     )
   }
 }

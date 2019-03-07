@@ -95,6 +95,15 @@ class Title extends Component {
           }}
           placeholder={placeholder}
         />
+        <style jsx global>
+          {`
+            [contenteditable='true']:empty:before {
+              content: attr(placeholder);
+              display: block;
+              color: #aaa;
+            }
+          `}
+        </style>
       </Block>
     )
   }

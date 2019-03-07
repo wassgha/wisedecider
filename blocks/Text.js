@@ -95,11 +95,19 @@ class Text extends Component {
 
   render() {
     const { placeholder = DEFAULT_PLACEHOLDER } = this.props
-    console.log('placeholder', placeholder)
 
     return (
       <Block>
         <Editor placeholder={placeholder} value={this.textStore.content} onChange={this.onEdit} />
+        <style jsx global>
+          {`
+            [contenteditable='true']:empty:before {
+              content: attr(placeholder);
+              display: block;
+              color: #aaa;
+            }
+          `}
+        </style>
       </Block>
     )
   }

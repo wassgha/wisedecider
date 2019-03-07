@@ -38,9 +38,13 @@ class Score extends Component {
           value={score}
           editing={true}
         />
-
         <style jsx>{`
           .cell {
+            display: flex;
+            flex: 1;
+            padding: 16px;
+            flex-direction: column;
+            align-items: center;
             background-color: rgba(0, 0, 0, ${score / 5});
             color: ${textColor};
             border-radius: 8px;

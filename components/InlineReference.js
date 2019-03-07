@@ -61,6 +61,7 @@ class InlineReference extends Component {
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            text-align: left;
           }
           .dragHandle {
             width: 20px;

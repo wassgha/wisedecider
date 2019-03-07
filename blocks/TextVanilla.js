@@ -167,6 +167,15 @@ class Text extends Component {
           }}
           onClick={this.onFocus}
         /> */}
+        <style jsx global>
+          {`
+            [contenteditable='true']:empty:before {
+              content: attr(placeholder);
+              display: block;
+              color: #aaa;
+            }
+          `}
+        </style>
       </Block>
     )
   }

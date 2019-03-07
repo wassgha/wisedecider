@@ -15,6 +15,8 @@ import Value from '../components/Value'
 import InlineButton from '../components/InlineButton'
 import DecisionTable from '../components/DecisionTable'
 import Header from '../components/Header'
+import Layout from '../components/Layout'
+import Wrapper from '../components/Wrapper'
 
 // Blocks
 import Title from '../blocks/Title'
@@ -66,7 +68,7 @@ class Worksheet extends Component {
     const title =
       titleBlock && titleBlock.data && titleBlock.data.title ? titleBlock.data.title : 'Unnamed'
     return (
-      <div className={'container'}>
+      <Layout>
         <Head>
           <title>{title} WiseDecider Worksheet</title>
         </Head>
@@ -83,7 +85,7 @@ class Worksheet extends Component {
         </Header>
 
         {/* Content */}
-        <div className={'wrapper'}>
+        <Wrapper>
           {/* Blocks */}
           <ReactPlaceholder
             ready={!worksheet.isLoading}
@@ -178,7 +180,7 @@ class Worksheet extends Component {
               values.
             </p>
           </ReactPlaceholder>
-        </div>
+        </Wrapper>
         <DecisionTable
           scores={worksheet.scores}
           values={worksheet.values}
@@ -186,9 +188,6 @@ class Worksheet extends Component {
         />
 
         <style jsx>{`
-          .container {
-          }
-
           .save-indicator {
             color: #afafaf;
             vertical-align: middle;
@@ -204,7 +203,7 @@ class Worksheet extends Component {
             margin-left: 6px;
           }
         `}</style>
-      </div>
+      </Layout>
     )
   }
 }

@@ -13,7 +13,7 @@ class Value extends Component {
   }
 
   render() {
-    const { value, index = 0, id, editable = false, draggable } = this.props
+    const { value, index = 0, id, editable = false, draggable, expand = false } = this.props
     return (
       <div className={'value'}>
         <InlineReference
@@ -34,6 +34,7 @@ class Value extends Component {
             display: inline-block;
             max-width: 100%;
             margin: 5px;
+            ${expand && 'width: 100%'};
           }
           .text-field {
             margin-left: 16px;

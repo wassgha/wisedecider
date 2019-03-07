@@ -13,7 +13,15 @@ class Choice extends Component {
   }
 
   render() {
-    const { id, value, index = 0, color = '#7FB049', editable = false, draggable } = this.props
+    const {
+      id,
+      value,
+      index = 0,
+      color = '#7FB049',
+      editable = false,
+      draggable,
+      expand = false
+    } = this.props
     return (
       <div className={'choice'}>
         <InlineReference
@@ -37,6 +45,7 @@ class Choice extends Component {
             display: inline-block;
             max-width: 100%;
             margin: 5px;
+            ${expand && 'width: 100%'};
           }
           .text-field {
             margin-left: 16px;
