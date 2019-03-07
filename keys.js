@@ -1,4 +1,4 @@
-const dotenv = process.env.NODE_ENV !== 'PROD' ? require('dotenv').config() : {}
+const dotenv = process.env.ENVIRON !== 'PROD' ? require('dotenv').config() : {}
 
 if (dotenv.error) {
   throw dotenv.error
