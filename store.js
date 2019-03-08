@@ -173,7 +173,7 @@ const worksheet = store({
     worksheet.values.push({ id, name })
     // Add score for each choice
     worksheet.choices.forEach(choice => {
-      worksheet.rate(choice.id, id, 1, '', false)
+      worksheet.rate(choice.id, id, 0, '', false)
     })
     worksheet.save()
     return id

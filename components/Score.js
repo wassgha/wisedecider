@@ -45,7 +45,7 @@ class Score extends Component {
             padding: 16px;
             flex-direction: column;
             align-items: center;
-            background-color: rgba(0, 0, 0, ${score / 5});
+            background-color: rgba(0, 0, 0, ${score === 0 ? 2.5 / 5 : score / 5});
             color: ${textColor};
             border-radius: 8px;
             padding: 16px;
