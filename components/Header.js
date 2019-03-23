@@ -5,7 +5,7 @@ import { view, store } from 'react-easy-state'
 class Header extends Component {
   render() {
     const { children } = this.props
-    const loggedIn = true
+    const loggedIn = false
 
     return (
       <div className={'header'}>
@@ -120,8 +120,8 @@ class Header extends Component {
           }
           .menu .link {
             padding: 4px;
-            padding-right: 24px;
-            padding-left: 24px;
+            padding-right: 16px;
+            padding-left: 16px;
             color: #333;
             text-decoration: none;
             font-size: 13px;
