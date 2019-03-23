@@ -17,6 +17,8 @@ class Layout extends Component {
               background: white;
               margin: 0px;
               line-height: 2;
+              overflow: hidden;
+              position: relative;
             }
           `}
         </style>
