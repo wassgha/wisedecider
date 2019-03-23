@@ -61,7 +61,7 @@ class Doc extends Document {
           />
           <link
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,800"
+            href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800"
           />
           <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
         </Head>

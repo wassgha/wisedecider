@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import Head from 'next/head'
-import Link from 'next/link'
-import _ from 'lodash'
-import randomColor from 'randomcolor'
+import Typist from 'react-typist'
+import TypistLoop from 'react-typist-loop'
 
 // Components
 import Header from '../components/Header'
@@ -11,81 +9,167 @@ import Layout from '../components/Layout'
 import Wrapper from '../components/Wrapper'
 
 // Material UI Components
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemAvatar from '@material-ui/core/ListItemAvatar'
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
-import ListItemText from '@material-ui/core/ListItemText'
-import Avatar from '@material-ui/core/Avatar'
-import IconButton from '@material-ui/core/IconButton'
-import Icon from '@material-ui/core/Icon'
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = () => ({})
 
-class IndexPage extends Component {
-  static async getInitialProps() {
-    const { data } = await axios.get(`${process.env.SERVER_HOST}api/worksheet`)
-    return {
-      data
-    }
-  }
-
-  deleteWorksheet(id) {
-    if (!id) return
-    axios.delete(`${process.env.SERVER_HOST}api/worksheet/${id}`)
-    if (window) window.location.reload(false)
-  }
-
+class LandingPage extends Component {
   render() {
-    const { data } = this.props
     return (
       <Layout>
         <Head>
-          <title>WiseDecider Worksheets</title>
+          <title>WiseDecider® - Online Decision Making Tool</title>
         </Head>
         {/* Header */}
         <Header />
-        <Wrapper>
-          <h2>Your Worksheets</h2>
-          <List component="nav" disablePadding={true}>
-            {data.map(worksheet => {
-              const titleBlock = _.find(worksheet.blocks || [], { type: 'title' })
-              const title =
-                titleBlock && titleBlock.data && titleBlock.data.title
-                  ? titleBlock.data.title
-                  : 'Unnamed'
+        <div className={'section'}>
+          <Wrapper>
+            <h2>
+              Decisions, made{' '}
+              <TypistLoop interval={1000}>
+                {['simple', 'easy', 'efficient', 'precise', 'fast', 'accurate'].map(text => (
+                  <Typist
+                    className={'typist'}
+                    key={text}
+                    startDelay={0}
+                    cursor={{
+                      show: true,
+                      blink: true
+                    }}
+                  >
+                    {text}
+                  </Typist>
+                ))}
+              </TypistLoop>
+            </h2>
+            <p>
+              Getting decisions right is critical to success, try the easiest, most efficient way to
+              make decisions on the fly!
+            </p>
+            <form className={'signup-form'}>
+              <input type="text" placeholder="Enter your email to start…" />
+              <input type="submit" value="Get started" />
+              <div className={'note'}>
+                Already on WiseDecider? <a>Log in</a>
+              </div>
+            </form>
+          </Wrapper>
+          {/** Features (3 columns) */}
+          {/** Pricing page (start for free) */}
+          {/** Feature the book */}
+          {/** Screenshots / demo */}
+          {/** Featured Worksheets (examples from different fields) */}
+          {/** Trusted by these companies */}
+          {/** Big start now button */}
+          {/** Footer */}
+          <style jsx>
+            {`
+              .section {
+                background: white;
+                display: flex;
+                padding-top: 48px;
+                padding-bottom: 48px;
+                justify-content: center;
+                align-items: center;
+              }
+              .section h2 {
+                font-size: 3rem;
+                line-height: 1.125;
+                color: #333;
+                margin: 0px;
+                padding: 0px;
+                margin-block-start: 0.67em;
+                margin-block-end: 0.67em;
+                margin-inline-start: 0px;
+                margin-inline-end: 0px;
+                font-weight: 700;
+              }
+              .section p {
+                font-size: 1.5rem;
+                line-height: 1.8;
+                color: #888;
+                margin: 0px;
+                padding: 0px;
+              }
+              .signup-form {
+                margin-top: 48px;
+                margin-bottom: 48px;
+              }
+              .signup-form input[type='text'] {
+                background: #ededed;
+                border-radius: 8px;
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 400;
+                font-size: 18px;
+                color: #928f8f;
+                border: none;
+                padding: 8px;
+                padding-left: 16px;
+                padding-right: 16px;
+                height: 48px;
+                min-width: 256px;
+                margin-right: 16px;
+                vertical-align: middle;
+              }
+              .signup-form input[type='submit'] {
+                background: #0984e3;
+                border-radius: 8px;
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 600;
+                font-size: 18px;
+                color: #ffffff;
+                text-align: center;
+                border: none;
+                padding: 8px;
+                height: 48px;
+                vertical-align: middle;
+                padding-left: 16px;
+                padding-right: 16px;
+              }
+              .signup-form .note {
+                padding-top: 16px;
+                font-size: 16px;
+                display: block;
+                font-family: 'Open Sans', sans-serif;
+                color: #6f6e6e;
+              }
+              .signup-form .note a {
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 600;
+                color: #555;
+                border-bottom: 2px dashed #6f6e6e;
+              }
+            `}
+          </style>
+          <style>{`
+            .Typist {
+              color: #0984e3;
+              display: inline-block;
+            }
+            .Typist .Cursor {
+              display: inline-block;
+            }
+            .Typist .Cursor--blinking {
+              opacity: 1;
+              animation: blink 1s linear infinite;
+            }
 
-              return (
-                <Link href={`/worksheet/${worksheet._id}`} passHref>
-                  <ListItem component={'a'} button>
-                    <ListItemAvatar>
-                      <Avatar
-                        style={{
-                          backgroundColor: worksheet.color || randomColor({ luminosity: 'dark' })
-                        }}
-                      >
-                        <Icon>{'insert_drive_file'}</Icon>
-                      </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText
-                      primary={title == 'Unnamed' ? <i>{title}</i> : title}
-                      secondary={'Draft'}
-                    />
-                    <ListItemSecondaryAction>
-                      <IconButton onClick={() => this.deleteWorksheet(worksheet._id)}>
-                        <Icon>{'delete'}</Icon>
-                      </IconButton>
-                    </ListItemSecondaryAction>
-                  </ListItem>
-                </Link>
-              )
-            })}
-          </List>
-        </Wrapper>
+            @keyframes blink {
+              0% {
+                opacity: 1;
+              }
+              50% {
+                opacity: 0;
+              }
+              100% {
+                opacity: 1;
+              }
+            }
+          `}</style>
+        </div>
       </Layout>
     )
   }
 }
 
-export default withStyles(styles)(IndexPage)
+export default withStyles(styles)(LandingPage)

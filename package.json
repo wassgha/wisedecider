@@ -69,6 +69,8 @@
     "react-star-rating-component": "^1.4.1",
     "react-table": "^6.8.6",
     "react-throttle": "^0.3.0",
+    "react-typist": "^2.0.5",
+    "react-typist-loop": "0.0.5",
     "react-virtualized": "^9.18.0",
     "redux": "^4.0.0",
     "redux-persist": "^5.10.0",
