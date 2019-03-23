@@ -1,4 +1,4 @@
-const dotenv = process.env.ENVIRON !== 'PROD' ? require('dotenv').config() : {}
+const dotenv = process.env.ENVIRON !== 'PROD' ? require('dotenv').config() : { parsed: {} }
 
 if (dotenv.error) {
   throw dotenv.error
