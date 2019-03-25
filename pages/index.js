@@ -50,7 +50,7 @@ class LandingPage extends Component {
             </p>
             <form className={'signup-form'}>
               <input type="text" placeholder="Enter your email to start…" />
-              <input type="submit" value="Get started" />
+              <button>Get started</button>
               <div className={'note'}>
                 Already on WiseDecider? <a>Log in</a>
               </div>
@@ -129,6 +129,18 @@ class LandingPage extends Component {
         {/** Trusted by these companies */}
         {/** Big start now button */}
         {/** Footer */}
+        <Wrapper>
+          <div className={'section centered'}>
+            <h3>Get started with WiseDecider&reg; now</h3>
+            <form className={'signup-form'}>
+              <input type="text" placeholder="Enter your email to start…" />
+              <button>Get started</button>
+              <div className={'note'}>
+                Already on WiseDecider? <a>Log in</a>
+              </div>
+            </form>
+          </div>
+        </Wrapper>
         <style jsx>
           {`
             .rects {
@@ -162,6 +174,9 @@ class LandingPage extends Component {
               align-items: flex-start;
               flex-direction: column;
               position: relative;
+            }
+            .section.centered {
+              text-align: center;
             }
             .hero h2 {
               font-size: 3rem;
@@ -242,8 +257,10 @@ class LandingPage extends Component {
               margin-right: 16px;
               vertical-align: middle;
               margin-bottom: 16px;
+              -webkit-appearance: none;
             }
-            .signup-form input[type='submit'] {
+            .signup-form input[type='submit'],
+            .signup-form button {
               background: #0984e3;
               border-radius: 8px;
               font-family: 'Open Sans', sans-serif;
@@ -258,6 +275,7 @@ class LandingPage extends Component {
               padding-left: 16px;
               padding-right: 16px;
               margin-bottom: 16px;
+              -webkit-appearance: none;
             }
             .signup-form .note {
               font-size: 16px;
