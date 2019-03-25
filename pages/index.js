@@ -253,7 +253,11 @@ class LandingPage extends Component {
               font-weight: 600;
             }
             .video {
+              background: white;
               border: 12px solid rgba(245, 245, 245, 0.4);
+              -moz-background-clip: padding;
+              -webkit-background-clip: padding;
+              background-clip: padding-box;
               border-radius: 22px;
               overflow: hidden;
               padding-top: 56.25%;
