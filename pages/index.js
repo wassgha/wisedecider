@@ -22,10 +22,6 @@ class LandingPage extends Component {
         <Head>
           <title>WiseDecider® - Online Decision Making Tool</title>
         </Head>
-        <div className={'bg'}>
-          <div className={'rect1'} />
-          <div className={'rect2'} />
-        </div>
         {/* Header */}
         <Header />
         <Wrapper>
@@ -63,6 +59,10 @@ class LandingPage extends Component {
         </Wrapper>
         <Wrapper>
           <div className={'section'}>
+            <div className={'rects'}>
+              <div className={'rect1'} />
+              <div className={'rect2'} />
+            </div>
             <Grid container spacing={16}>
               <Grid item xs>
                 <div className={'text'}>
@@ -131,21 +131,22 @@ class LandingPage extends Component {
         {/** Footer */}
         <style jsx>
           {`
-            .bg {
+            .rects {
               position: absolute;
-              transform: translateX(200px) translateY(-150px) rotate(-45deg);
               overflow: hidden;
+              width: 1400px;
+              transform: translateX(-80px) translateY(-780px) rotate(-45deg);
               transform-origin: top right;
             }
-            .bg .rect1,
-            .bg .rect2 {
+            .rects .rect1,
+            .rects .rect2 {
               background: rgba(9, 132, 227, 0.43);
               border-radius: 126px;
               width: 600px;
               height: 600px;
               display: inline-block;
             }
-            .bg .rect2 {
+            .rects .rect2 {
               background: rgba(9, 132, 227, 0.09);
               margin-left: 126px;
             }
@@ -154,13 +155,13 @@ class LandingPage extends Component {
             }
             .hero,
             .section {
-              background: white;
               display: flex;
               padding-top: 60px;
               padding-bottom: 60px;
               justify-content: center;
               align-items: flex-start;
               flex-direction: column;
+              position: relative;
             }
             .hero h2 {
               font-size: 3rem;
