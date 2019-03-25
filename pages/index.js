@@ -5,6 +5,7 @@ import TypistLoop from 'react-typist-loop'
 
 // Components
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 import Layout from '../components/Layout'
 import Wrapper from '../components/Wrapper'
 
@@ -131,8 +132,18 @@ class LandingPage extends Component {
         {/** Footer */}
         <Wrapper>
           <div className={'section centered'}>
-            <h3>Get started with WiseDecider&reg; now</h3>
+            <div className={'rects2'}>
+              <div className={'rect1'} />
+              <div className={'rect2'} />
+            </div>
+            <h3>Trusted by hundreds of organizations</h3>
+            <img src="https://3suxxy8wyhp1vv6ln2ofn5a148f-wpengine.netdna-ssl.com/wp-content/uploads/png/logo-application-and-OS-1024x300.png" />
+          </div>
+        </Wrapper>
+        <Wrapper>
+          <div className={'section centered'}>
             <form className={'signup-form'}>
+              <h3>Get started with WiseDecider&reg; now</h3>
               <input type="text" placeholder="Enter your email to start…" />
               <button>Get started</button>
               <div className={'note'}>
@@ -141,24 +152,38 @@ class LandingPage extends Component {
             </form>
           </div>
         </Wrapper>
+        <Footer />
         <style jsx>
           {`
-            .rects {
+            .rects,
+            .rects2 {
               position: absolute;
               overflow: hidden;
               width: 1400px;
+              height: 600px;
+              z-index: 0;
+            }
+            .rects {
               transform: translateX(-80px) translateY(-780px) rotate(-45deg);
               transform-origin: top right;
             }
+            .rects2 {
+              transform: translateX(-200px) translateY(100px) rotate(45deg);
+              transform-origin: top left;
+            }
             .rects .rect1,
-            .rects .rect2 {
+            .rects2 .rect1,
+            .rects .rect2,
+            .rects2 .rect2 {
               background: rgba(9, 132, 227, 0.43);
               border-radius: 126px;
               width: 600px;
               height: 600px;
               display: inline-block;
+              z-index: 0;
             }
-            .rects .rect2 {
+            .rects .rect2,
+            .rects2 .rect2 {
               background: rgba(9, 132, 227, 0.09);
               margin-left: 126px;
             }
@@ -177,6 +202,7 @@ class LandingPage extends Component {
             }
             .section.centered {
               text-align: center;
+              align-items: center;
             }
             .hero h2 {
               font-size: 3rem;
@@ -242,6 +268,7 @@ class LandingPage extends Component {
               margin-bottom: 48px;
             }
             .signup-form input[type='text'] {
+              outline: none;
               background: #ededed;
               border-radius: 8px;
               font-family: 'Open Sans', sans-serif;
@@ -261,6 +288,7 @@ class LandingPage extends Component {
             }
             .signup-form input[type='submit'],
             .signup-form button {
+              outline: none;
               background: #0984e3;
               border-radius: 8px;
               font-family: 'Open Sans', sans-serif;
