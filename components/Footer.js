@@ -5,7 +5,7 @@ import { view, store } from 'react-easy-state'
 class Footer extends Component {
   render() {
     const { children } = this.props
-    const loggedIn = false
+    const loggedIn = true
 
     return (
       <div className={'footer'}>
