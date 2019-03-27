@@ -11,12 +11,8 @@ import Wrapper from '../components/Wrapper'
 import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button'
 import FormControl from '@material-ui/core/FormControl'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Checkbox from '@material-ui/core/Checkbox'
 import Input from '@material-ui/core/Input'
 import InputLabel from '@material-ui/core/InputLabel'
-import Icon from '@material-ui/core/Icon'
-import Paper from '@material-ui/core/Paper'
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
@@ -47,7 +43,10 @@ const styles = theme => ({
     marginTop: theme.spacing.unit
   },
   submit: {
-    marginTop: theme.spacing.unit * 3
+    marginTop: theme.spacing.unit * 3,
+    boxShadow: 'none',
+    border: 'none',
+    padding: 14
   }
 })
 
@@ -65,12 +64,9 @@ class Register extends Component {
         </Head>
         {/* Header */}
         <Header user={user} />
-        <Wrapper>
-          <h2>Register</h2>
-          <Paper className={classes.paper}>
-            <Avatar className={classes.avatar}>
-              <Icon>{'lock'}</Icon>
-            </Avatar>
+        <div className={'form-wrapper'}>
+          <Wrapper>
+            <h2>Register</h2>
             <form className={classes.form} action={'/api/register'} method={'POST'}>
               <FormControl margin="normal" required fullWidth>
                 <InputLabel htmlFor="email">Email Address</InputLabel>
@@ -104,8 +100,15 @@ class Register extends Component {
                 Register
               </Button>
             </form>
-          </Paper>
-        </Wrapper>
+          </Wrapper>
+          <style jsx>{`
+            .form-wrapper {
+              max-width: 480px;
+              margin: auto;
+              margin-top: 10%;
+            }
+          `}</style>
+        </div>
         <Footer />
       </Layout>
     )
