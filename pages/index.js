@@ -17,14 +17,19 @@ import Grid from '@material-ui/core/Grid'
 const styles = () => ({})
 
 class LandingPage extends Component {
+  static async getInitialProps({ req }) {
+    return { user: req && req.user }
+  }
+
   render() {
+    const { user } = this.props
     return (
       <Layout>
         <Head>
           <title>WiseDecider® - Online Decision Making Tool</title>
         </Head>
         {/* Header */}
-        <Header />
+        <Header user={user} />
         <Wrapper>
           <div className={'hero'}>
             <h2>

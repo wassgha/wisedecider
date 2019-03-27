@@ -14,10 +14,12 @@ const MONGODB_URI =
   process.env.MONGODB_URI ||
   dotenv.parsed.MONGODB_URI ||
   `mongodb://localhost/nextjs-express-boilerplate`
+const SESSION_SECRET = process.env.SESSION_SECRET || dotenv.parsed.SESSION_SECRET
 
 module.exports = {
   ENVIRON,
   PORT,
   SERVER_HOST,
-  MONGODB_URI
+  MONGODB_URI,
+  SESSION_SECRET
 }

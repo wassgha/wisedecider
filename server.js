@@ -5,17 +5,38 @@ const server = express()
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const glob = require('glob')
+const passport = require('passport')
+const cookieParser = require('cookie-parser')
+const session = require('cookie-session')
 
 const next = require('next')
 const app = next({ dev: Keys.ENVIRON !== 'prod' })
 const routes = require('./routes')
 const handler = routes.getRequestHandler(app)
 
+const User = require('./api/models/user')
+
 app.prepare().then(() => {
   // Parse application/x-www-form-urlencoded
   server.use(bodyParser.urlencoded({ extended: false }))
   // Parse application/json
   server.use(bodyParser.json())
+  // Parse cookies
+  server.use(cookieParser())
+  // Sessions
+  server.use(
+    session({
+      secret: Keys.SESSION_SECRET,
+      resave: true,
+      saveUninitialized: false
+    })
+  )
+  // Passport
+  passport.use(User.createStrategy())
+  passport.serializeUser(User.serializeUser())
+  passport.deserializeUser(User.deserializeUser())
+  server.use(passport.initialize())
+  server.use(passport.session())
 
   // Allows for cross origin domain request:
   server.use(function(req, res, next) {

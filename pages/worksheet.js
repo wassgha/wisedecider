@@ -8,7 +8,7 @@ import worksheet from '../store'
 import Worksheet from '../components/Worksheet'
 
 class WorksheetPage extends Component {
-  static async getInitialProps({ res, query }) {
+  static async getInitialProps({ res, req, query }) {
     let { id } = query
     if (!id) {
       const id = await worksheet.new()
@@ -21,12 +21,12 @@ class WorksheetPage extends Component {
         Router.push('/worksheet/' + id)
       }
     }
-    return { id }
+    return { id, user: req && req.user }
   }
 
   render() {
-    const { id } = this.props
-    return <Worksheet id={id} />
+    const { id, user } = this.props
+    return <Worksheet id={id} user={user} />
   }
 }
 

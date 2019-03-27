@@ -16,49 +16,7 @@ class Footer extends Component {
               <span>Decider</span>
             </div>
           </Link>
-          <div className={'menu'}>
-            {children}
-            <div className={'menu-right'}>
-              {!loggedIn && (
-                <a className={'link'} href={'/worksheet'}>
-                  Pricing
-                </a>
-              )}
-              {!loggedIn && (
-                <a className={'link '} href={'/worksheet'}>
-                  Log in
-                </a>
-              )}
-              {!loggedIn && (
-                <a className={'link featured'} href={'/worksheet'}>
-                  Register
-                </a>
-              )}
-              {loggedIn && (
-                <a className={'link'} href={'/logout'}>
-                  Logout
-                </a>
-              )}
-              {loggedIn && (
-                <a className={'link'} href={'/homepage'}>
-                  Your Worksheets
-                </a>
-              )}
-              {loggedIn && (
-                <a className={'new-btn'} href={'/worksheet'} target="_blank">
-                  NEW
-                </a>
-              )}
-            </div>
-          </div>
-          {loggedIn && (
-            <div className={'profile'}>
-              <img
-                src={'https://cdn-images-1.medium.com/fit/c/64/64/1*UuZygjKcOW9DKNMar0eEYQ.jpeg'}
-                className={'profilePhoto'}
-              />
-            </div>
-          )}
+          <div className={'menu'}>&copy; WiseDecider 2011 - 2019</div>
         </div>
         <style jsx>{`
           .footer {

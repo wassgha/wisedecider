@@ -64,6 +64,7 @@ class Worksheet extends Component {
   }
 
   render() {
+    const { user } = this.props
     const titleBlock = _.find(worksheet.blocks || [], { type: 'title' })
     const title =
       titleBlock && titleBlock.data && titleBlock.data.title ? titleBlock.data.title : 'Unnamed'
@@ -73,7 +74,7 @@ class Worksheet extends Component {
           <title>{title} WiseDecider Worksheet</title>
         </Head>
         {/* Header */}
-        <Header>
+        <Header user={user}>
           <span className={'save-indicator'}>
             <Icon className={'save-indicator-icon'}>
               {worksheet.isLoading ? 'hourglass_empty' : worksheet.isSaving ? 'sync' : 'cloud'}

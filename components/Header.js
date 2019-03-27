@@ -4,8 +4,8 @@ import { view, store } from 'react-easy-state'
 
 class Header extends Component {
   render() {
-    const { children } = this.props
-    const loggedIn = true
+    const { children, user } = this.props
+    const loggedIn = !!(user && user.email)
 
     return (
       <div className={'header'}>
@@ -25,17 +25,17 @@ class Header extends Component {
                 </a>
               )}
               {!loggedIn && (
-                <a className={'link '} href={'/worksheet'}>
+                <a className={'link '} href={'/login'}>
                   Log in
                 </a>
               )}
               {!loggedIn && (
-                <a className={'link featured'} href={'/worksheet'}>
+                <a className={'link featured'} href={'/register'}>
                   Register
                 </a>
               )}
               {loggedIn && (
-                <a className={'link'} href={'/logout'}>
+                <a className={'link'} href={'/api/logout'}>
                   Logout
                 </a>
               )}

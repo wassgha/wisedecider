@@ -24,10 +24,11 @@ import { withStyles } from '@material-ui/core/styles'
 const styles = () => ({})
 
 class HomePage extends Component {
-  static async getInitialProps() {
+  static async getInitialProps({ req }) {
     const { data } = await axios.get(`${process.env.SERVER_HOST}api/worksheet`)
     return {
-      data
+      data,
+      user: req && req.user
     }
   }
 
@@ -38,14 +39,14 @@ class HomePage extends Component {
   }
 
   render() {
-    const { data } = this.props
+    const { data, user } = this.props
     return (
       <Layout>
         <Head>
           <title>WiseDecider Worksheets</title>
         </Head>
         {/* Header */}
-        <Header />
+        <Header user={user} />
         <Wrapper>
           <h2>Your Worksheets</h2>
           <List component="nav" disablePadding={true}>
