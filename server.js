@@ -27,6 +27,7 @@ app.prepare().then(() => {
   server.use(
     session({
       secret: Keys.SESSION_SECRET,
+      signed: false,
       resave: true,
       saveUninitialized: false
     })
